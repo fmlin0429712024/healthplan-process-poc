@@ -19,17 +19,19 @@ A regional health plan processes 15,000 PA requests per month through manual nur
 
 ---
 
-## Three AI Opportunities
+## Four AI Opportunities
 
-### 1. Intelligent Auto-Adjudication ← *Prototype built*
-Raw fax/PDF → AI extracts fields → completeness check → clinical guidelines → APPROVE / DENY / ESCALATE.
-Targets 80% of cases decided same-day without nurse touch.
+### 1. Ingestion — Unstructured → Structured ← *Prototype built*
+Multi-channel documentation (fax, PDF, portal, uploads) arrives in any format. AI extracts and normalizes all fields into structured JSON — eliminating manual data entry and enabling downstream automation.
 
-### 2. Clinical Knowledge Intelligence
-AI-maintained guideline wiki. Clinical staff edit plain-English files; AI validates consistency and propagates changes to the decision pipeline instantly — no retraining, no deployment.
+### 2. Document Completeness Checker ← *Prototype built*
+22% rework rate stems from missing information. AI validates each submission against treatment tier requirements and identifies missing fields with specific provider guidance — before clinical review begins.
 
-### 3. Predictive Denial Prevention
-Before submission, AI scores approval likelihood and surfaces specific missing fields — so providers fix the submission before the plan ever sees it.
+### 3. Clinical Guidelines Verification Engine ← *Prototype built*
+Manual guideline verification for 15,000 cases/month is deterministic work for routine cases. AI loads clinical guidelines, evaluates patient data, applies decision logic, and produces APPROVE / DENY / ESCALATE with a full audit trail.
+
+### 4. Case Manager — Workflow Automation ← *Prototype built*
+Frequent provider status calls consume nurse time. AI tracks PA status through all stages, sends automated updates, handles routine inquiries, and escalates complex ones to the nurse queue.
 
 ---
 
