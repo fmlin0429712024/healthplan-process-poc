@@ -78,14 +78,14 @@ python run_pa.py scenario-1-auto-approve demo-run-01
 
 Three capabilities are architecturally complete but not yet wired to live systems:
 
-### ① Eval Loop with Human-in-the-Loop
+### ① Knowledge Wiki — Engineering Project Context
+SKILL.md files are plain-English business rules readable by non-engineers. Clinical staff propose updates; engineers version-control them; AI agents inject them at runtime. No model retraining required. Designed to extend to a live internal wiki with payer policy sync.
+
+### ② Eval Loop with Human-in-the-Loop
 Teaching Assistant pattern: **Golden Set** (answer key) → **Grader agent** (marks decisions) → **HITL escalation** (nurse review for conflicts).
 - 80% deterministic: zero tolerance, exact match required
 - 10% autonomous: scored on 3 dimensions (conclusion / reasoning / escalation quality)
 - 10% already escalated by clinical complexity
-
-### ② Knowledge Wiki — Engineering Project Context
-SKILL.md files are plain-English business rules readable by non-engineers. Clinical staff propose updates; engineers version-control them; AI agents inject them at runtime. No model retraining required. Designed to extend to a live internal wiki with payer policy sync.
 
 ### ③ Google ADK — Enterprise Deployment Path
 The same pipeline runs locally (Claude) and on Google Cloud (ADK + Gemini 2.5 Pro on Vertex AI). Switching is an infrastructure decision — no business logic changes. Enterprise features: IAM auth, Cloud Logging, auto-scaling, HIPAA-eligible BAA.
