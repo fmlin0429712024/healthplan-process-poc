@@ -1,298 +1,172 @@
-# LLM Wiki Setup
+# AI-Powered Prior Authorization Process Optimization
 
-A persistent, LLM-maintained knowledge base following the [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) by Andrej Karpathy.
+## Overview
 
-## What is This?
+A regional health plan processes approximately 15,000 prior authorization requests per month through manual nurse review. Clinical documentation arrives through multiple channels—fax, PDFs, portals, and uploads—creating a 4.2-day average turnaround time and a 22% rework rate due to missing information. Leadership wants to reduce turnaround time by 40% without increasing headcount.
 
-This is **not** a traditional RAG system. Instead of retrieving from raw documents on every query, an LLM incrementally builds and maintains a **persistent wiki** — a structured, interlinked collection of markdown files that compounds over time.
+This solution presents three AI opportunities implemented as **Claude Skills** (distributed as Plugins for Claude Coworker) to automate routine tasks while maintaining clinical quality and regulatory compliance.
 
-### Key Differences from RAG
+## Problem Statement
 
-- **RAG:** Retrieves chunks → synthesizes answer → forgets everything
-- **LLM Wiki:** Reads source → integrates into wiki → knowledge persists
+**Current State Metrics:**
 
-The wiki is a **compounding artifact**. Cross-references are already there. Contradictions are already flagged. The synthesis already reflects everything you've read.
+| Metric | Current State | Goal (To-Be) |
+|--------|---------------|--------------|
+| Monthly PA volume | ~15,000 requests | ~15,000 (no change) |
+| Average turnaround time | 4.2 days | **2.5 days** (40% reduction) |
+| Rework rate | 22% (missing info) | **<5%** (proactive validation) |
+| Auto-adjudication rate | 0% (100% manual) | **70-80%** (routine cases) |
+| Nurse review focus | Data gathering + clinical judgment | **Clinical judgment only** |
+| Provider status calls | Frequent | **Eliminated** (automated updates) |
 
-## Directory Structure
+## Three AI Opportunities
+
+### 1. Document Completeness Checker
+
+**Problem:** 22% rework rate (3,300 cases/month) due to missing information.
+
+**Skill Implementation:**
+- Ingests documentation from any channel (fax OCR, PDF, portal, upload)
+- Extracts structured data (diagnosis, labs, treatment history)
+- Validates against PA criteria; identifies missing elements
+- Returns immediate feedback to provider
+
+**Plugin Workflow:** Provider submits → Skill validates → Complete cases route to review / Incomplete cases return with specific guidance
+
+**Impact:** Eliminate 22% rework; reduce turnaround by 2-4 days for affected cases; immediate provider feedback
+
+### 2. Clinical Guidelines Verification Engine
+
+**Problem:** Manual guideline verification for 15,000 cases/month is deterministic work that doesn't require human judgment for routine cases.
+
+**Skill Implementation:**
+- Loads clinical guidelines for requested treatment
+- Evaluates patient data against criteria (diagnosis, labs, prior treatments, contraindications)
+- Applies decision logic (if/then rules, thresholds, temporal requirements)
+- Produces: APPROVE / DENY (with reason) / ESCALATE (for nurse review)
+- Generates audit trail for regulatory compliance
+
+**Plugin Workflow:** Complete request → Skill evaluates → Routine cases auto-adjudicate (70-80%) / Complex cases escalate to nurse with pre-loaded context
+
+**Impact:** Auto-adjudicate 70-80% of cases; <1 day turnaround for routine approvals; nurses focus on complex clinical judgment
+
+### 3. PA Workflow Orchestrator
+
+**Problem:** Frequent provider status calls consume nurse time; opaque process creates provider frustration.
+
+**Skill Implementation:**
+- Tracks PA status through all stages
+- Sends automated updates at key milestones
+- Handles routine inquiries; escalates complex ones
+- Delivers decisions with clinical rationale
+
+**Plugin Workflow:** Request submitted → Automated confirmation → Status updates at each stage → Decision notification with rationale
+
+**Impact:** Eliminate routine status calls; improve provider satisfaction; free nurse capacity from administrative tasks
+
+## Extensibility & Implementation
+
+**Extensibility:** Modular Skill architecture extends to appeals, utilization review, case management; integrates with EHR/payer platforms; scales via Plugin distribution model.
+
+**Implementation:**
+- **Phase 1:** Validate with historical data
+- **Phase 2:** Pilot in shadow mode
+- **Phase 3:** Measure & scale
+
+**Outcome:** 40% turnaround reduction, 70-80% auto-adjudication, maintained clinical quality & regulatory compliance—without headcount increase.
+
+## Project Structure
 
 ```
 .
-├── AGENTS.md              # Schema: how the LLM should maintain the wiki
-├── README.md              # This file
-├── raw/                   # Your source materials (immutable)
-│   ├── sources/          # Documents, articles, papers, data
-│   └── assets/           # Images, diagrams, media
-├── wiki/                  # LLM-maintained knowledge base
-│   ├── index.md          # Content catalog
-│   ├── log.md            # Chronological record
-│   ├── overview.md       # High-level synthesis
-│   ├── entities/         # People, organizations, products
-│   ├── concepts/         # Ideas, theories, methods
-│   ├── sources/          # One summary per raw source
-│   ├── analyses/         # Comparisons, deep-dives
-│   └── queries/          # Preserved answers
-└── tools/                 # Optional helper scripts
-    └── ingest-helper.md  # Ingestion workflow guide
+├── deliverables/                 # Solution documents
+│   ├── prior-authorization-ai-solution.pdf    # Main solution proposal
+│   ├── prior-authorization-ai-solution.md    # Markdown source
+│   ├── prior-authorization-ai-solution.html   # HTML version
+│   └── pdf-style.css                           # PDF styling
+├── raw/                          # Source materials
+│   ├── sources/                 # Source documents
+│   │   ├── example-llm-wiki-pattern.md
+│   │   └── healthplan-prior-authorization-problem.md
+│   ├── assets/                  # Images, diagrams, media
+│   └── references/              # Reference documents
+│       ├── Automating_Formulary_Exception_Adjudication.pdf
+│       └── enterprise-agentic-framework.pdf
+├── wiki/                         # LLM-maintained knowledge base
+│   ├── index.md                 # Content catalog
+│   ├── log.md                   # Chronological record
+│   ├── overview.md              # High-level synthesis
+│   ├── entities/                # People, organizations, products
+│   │   ├── Andrej-Karpathy.md
+│   │   ├── Claude.md
+│   │   └── Regional-Health-Plan.md
+│   ├── concepts/                # Ideas, theories, methods
+│   │   ├── AI-in-Healthcare.md
+│   │   ├── LLM-Wiki-Pattern.md
+│   │   ├── Memex.md
+│   │   ├── Prior-Authorization.md
+│   │   └── RAG.md
+│   ├── sources/                 # Source summaries
+│   │   ├── llm-wiki-pattern-karpathy.md
+│   │   └── healthplan-prior-authorization-problem.md
+│   └── queries/                 # Preserved answers
+│       ├── interview-assignment-scope-baseline.md
+│       └── interview-deliverables.md
+├── .obsidian/                    # Obsidian configuration
+├── AGENTS.md                     # Wiki schema and maintenance guidelines
+├── README.md                     # This file
+└── .gitignore
 ```
+
+## Technical Approach
+
+### Claude Skills Architecture
+
+Each AI opportunity is implemented as a **Claude Skill**—a self-contained unit of AI capability that can be distributed as a **Plugin** for Claude Coworker to execute autonomously:
+
+- **Modular Design:** Each Skill handles a specific workflow component
+- **Plugin Distribution:** Skills are packaged as Plugins for easy deployment
+- **Autonomous Execution:** Claude Coworker executes Skills without human intervention
+- **Human-in-the-Loop:** Complex cases escalate to nurses with pre-loaded context
+
+### Key Benefits
+
+- **Rapid Deployment:** Skills can be developed and deployed in days, not months
+- **Iterative Improvement:** Skills can be updated without system-wide changes
+- **Seamless Integration:** Plugins integrate with existing clinical workflows
+- **Regulatory Compliance:** Complete audit trails for all automated decisions
+- **Clinical Quality:** Nurses remain in the loop for complex clinical judgment
+
+## Solution Document
+
+The complete solution proposal is available in multiple formats:
+
+- **[PDF](deliverables/prior-authorization-ai-solution.pdf)** - Formatted presentation document
+- **[Markdown](deliverables/prior-authorization-ai-solution.md)** - Source document
+- **[HTML](deliverables/prior-authorization-ai-solution.html)** - Web-friendly version
+
+## Knowledge Base
+
+This project uses an **LLM Wiki** pattern for knowledge management—a persistent, LLM-maintained knowledge base that compounds over time. The wiki contains:
+
+- **Problem analysis** and domain research
+- **Entity pages** for organizations, people, and technologies
+- **Concept pages** for prior authorization, AI in healthcare, and related topics
+- **Interview deliverables** and scope baselines
+
+Browse the wiki using Obsidian or any markdown editor. The wiki is structured with WikiLinks (`[[page-name]]`) for easy navigation.
 
 ## Quick Start
 
-### 1. Initialize (Already Done!)
+1. **Review the solution:** Open `deliverables/prior-authorization-ai-solution.pdf`
+2. **Explore the wiki:** Browse `wiki/` to understand the problem domain
+3. **Check deliverables:** Review `wiki/queries/interview-deliverables.md` for assignment requirements
+4. **Understand scope:** Review `wiki/queries/interview-assignment-scope-baseline.md` for scope boundaries
 
-The wiki structure is already set up and ready to use.
+## License
 
-### 2. Add Your First Source
-
-Place a document in `raw/sources/`:
-
-```bash
-# Example: download an article
-curl -o raw/sources/my-article.md "https://example.com/article"
-
-# Or: copy a file
-cp ~/Documents/paper.pdf raw/sources/
-```
-
-### 3. Ingest the Source
-
-Tell your LLM agent:
-
-```
-ingest my-article.md
-```
-
-The LLM will:
-1. Read the source
-2. Discuss key takeaways with you
-3. Create a summary in `wiki/sources/`
-4. Extract and create entity pages
-5. Extract and create concept pages
-6. Add cross-references
-7. Update the index and log
-8. Update the overview if significant
-
-### 4. Query the Wiki
-
-Ask questions:
-
-```
-query: What are the main themes across all sources?
-query: How does [concept A] relate to [concept B]?
-query: What do we know about [entity]?
-```
-
-The LLM will search the wiki, synthesize an answer with citations, and optionally file the answer as a new page.
-
-### 5. Maintain the Wiki
-
-Periodically run:
-
-```
-lint
-```
-
-The LLM will check for:
-- Contradictions between pages
-- Stale claims
-- Orphan pages
-- Missing cross-references
-- Suggested new sources or questions
-
-## Commands
-
-Your LLM agent understands these shorthand commands:
-
-- **`ingest [filename]`** — Process a new source from `raw/sources/`
-- **`query [question]`** — Answer a question using the wiki
-- **`lint`** — Health-check the wiki
-- **`update [page]`** — Revise a specific page
-- **`compare [A] [B]`** — Create a comparison analysis
-- **`overview`** — Update the overview based on recent changes
-
-## Workflow Tips
-
-### Ingestion Style
-
-**Recommended:** One source at a time with your involvement
-- Read the summary
-- Check the updates
-- Guide what to emphasize
-
-**Alternative:** Batch-ingest many sources with less supervision
-
-Document your preferred style in `AGENTS.md`.
-
-### Good Answers Should Be Filed
-
-When you ask a good question and get a good answer, file it in the wiki:
-- Comparisons → `wiki/analyses/`
-- Specific queries → `wiki/queries/`
-
-This way your explorations compound in the knowledge base.
-
-### Contradictions Are Valuable
-
-When sources contradict each other:
-1. Note it explicitly in both source summaries
-2. Create a comparison page in `wiki/analyses/`
-3. Update `wiki/overview.md` if significant
-
-Don't hide contradictions — they're often the most interesting part.
-
-### Use WikiLinks Everywhere
-
-Always use `[[page-name]]` format for internal links. This enables:
-- Obsidian graph view
-- Easy refactoring
-- Backlink tracking
-
-## Tools and Integrations
-
-### Obsidian (Recommended)
-
-Open this directory in Obsidian to browse the wiki with:
-- **Graph view** — See connections between pages
-- **Backlinks** — See what links to each page
-- **Search** — Find content across all pages
-- **Dataview** — Query page metadata
-
-### Obsidian Web Clipper
-
-Browser extension that converts web articles to markdown:
-1. Install the extension
-2. Clip articles directly to `raw/sources/`
-3. Ingest them into the wiki
-
-### Git
-
-The wiki is just markdown files. You can:
-- Commit after each ingest
-- Branch for experimental analyses
-- Collaborate with others
-- Track version history
-
-```bash
-git init
-git add .
-git commit -m "Initial wiki setup"
-```
-
-### Search Tools (Optional)
-
-At small scale (<100 sources), `wiki/index.md` is sufficient.
-
-At larger scale, consider:
-- **qmd** — Hybrid BM25/vector search for markdown
-- Custom search scripts
-- MCP search server
-
-## Example: Ingesting the Example Source
-
-An example source is already in `raw/sources/example-llm-wiki-pattern.md`.
-
-Try ingesting it:
-
-```
-ingest example-llm-wiki-pattern.md
-```
-
-The LLM will create:
-- `wiki/sources/llm-wiki-pattern.md` — Summary
-- `wiki/entities/andrej-karpathy.md` — Entity page
-- `wiki/concepts/llm-wiki-pattern.md` — Concept page
-- `wiki/concepts/rag.md` — Concept page
-- Cross-references between all pages
-- Updated index and log
-
-Then try querying:
-
-```
-query: What is the difference between RAG and the LLM Wiki pattern?
-```
-
-## Customization
-
-### Domain-Specific Setup
-
-Edit `AGENTS.md` to add:
-- Domain-specific page types
-- Domain-specific tags
-- Domain-specific workflows
-- Preferred ingestion style
-
-### Page Templates
-
-Modify the templates in `AGENTS.md`:
-- Source summary format
-- Entity page format
-- Concept page format
-- Analysis page format
-
-### Directory Structure
-
-Add subdirectories as needed:
-- `wiki/timelines/` — Chronological views
-- `wiki/comparisons/` — Side-by-side comparisons
-- `wiki/visualizations/` — Charts and diagrams
-
-Document changes in `AGENTS.md`.
-
-## Philosophy
-
-### Division of Labor
-
-**Your job:**
-- Curate sources
-- Direct analysis
-- Ask good questions
-- Think about meaning
-
-**LLM's job:**
-- Summarizing
-- Cross-referencing
-- Filing
-- Bookkeeping
-- Maintaining consistency
-
-### Why This Works
-
-The tedious part of maintaining a knowledge base is bookkeeping. Humans abandon wikis because maintenance burden grows faster than value. LLMs don't get bored and can touch 15 files in one pass. The wiki stays maintained because the cost of maintenance is near zero.
-
-### Persistent vs Ephemeral
-
-Traditional chat with LLMs is ephemeral — every conversation starts from scratch. This wiki is persistent — knowledge compounds over time. The more you use it, the more valuable it becomes.
-
-## Inspiration
-
-This pattern is inspired by:
-- **Vannevar Bush's Memex (1945)** — Personal knowledge store with associative trails
-- **Zettelkasten** — Slip-box method for note-taking
-- **Personal wikis** — Obsidian, Roam, TiddlyWiki
-- **Fan wikis** — Tolkien Gateway, Wookieepedia
-
-The part these systems couldn't solve was maintenance. The LLM handles that.
-
-## Next Steps
-
-1. **Add your first real source** to `raw/sources/`
-2. **Ingest it** with your LLM agent
-3. **Browse the results** in Obsidian or your text editor
-4. **Ask questions** and file good answers
-5. **Keep adding sources** and watch the wiki grow
-
-## Resources
-
-- [Original LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) by Andrej Karpathy
-- [Obsidian](https://obsidian.md/) — Recommended wiki browser
-- [qmd](https://github.com/example/qmd) — Optional search tool
-- [Marp](https://marp.app/) — Markdown presentations
-
-## Support
-
-This is a pattern, not a product. Customize it to fit your needs. The `AGENTS.md` file is your configuration — evolve it as you learn what works.
+This is an interview assignment project for demonstration purposes.
 
 ---
 
-**Status:** Initialized and ready for first source ingest.
-
-**Last updated:** 2026-07-07
+**Solution Proposal | July 2026**
