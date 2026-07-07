@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Plan AI — Prior Authorization Innovation</title>
+<style>
+  :root {
+    --blue:    #1B4F8A;
+    --teal:    #00A896;
+    --amber:   #F4A261;
+    --red:     #E76F51;
+    --light:   #F0F4F8;
+    --white:   #FFFFFF;
+    --gray:    #4A5568;
+    --lgray:   #A0AEC0;
+    --border:  #CBD5E0;
+    --dark:    #1A202C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── Slide containers ─────────────────────────────────── */
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 80px;
+    page-break-after: always;
+    border-bottom: 3px solid var(--border);
+  }
+
+  .slide-cover {
+    background: linear-gradient(135deg, var(--blue) 0%, #2D6FC4 60%, var(--teal) 100%);
+    color: white;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-dark {
+    background: var(--dark);
+    color: white;
+  }
+
+  .slide-teal {
+    background: linear-gradient(135deg, var(--teal) 0%, #00C9B8 100%);
+    color: white;
+  }
+
+  /* ── Typography ───────────────────────────────────────── */
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 12px;
+  }
+
+  h1 { font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+  h2 { font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+  h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+
+  .subtitle {
+    font-size: 20px;
+    opacity: 0.85;
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .meta-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 4px;
+  }
+
+  /* ── Layout helpers ───────────────────────────────────── */
+  .row { display: flex; gap: 24px; align-items: flex-start; }
+  .col { flex: 1; }
+  .col-2 { flex: 2; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+
+  /* ── Cards ────────────────────────────────────────────── */
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+  }
+
+  .card-blue  { border-left: 4px solid var(--blue); }
+  .card-teal  { border-left: 4px solid var(--teal); }
+  .card-amber { border-left: 4px solid var(--amber); }
+  .card-red   { border-left: 4px solid var(--red); }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  /* ── Stat numbers ─────────────────────────────────────── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .stat-box {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 16px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+
+  .stat-num {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 600;
+  }
+
+  /* ── Pipeline / flow diagram ──────────────────────────── */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+
+  .pipe-step {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    text-align: center;
+    min-width: 120px;
+    flex: 1;
+    position: relative;
+  }
+
+  .pipe-step.active { border-color: var(--teal); background: #E6F9F7; }
+  .pipe-step.ai     { border-color: var(--blue); background: #EEF4FC; }
+
+  .pipe-step h4 { font-size: 12px; color: var(--gray); }
+  .pipe-step p  { font-size: 13px; font-weight: 700; margin-top: 4px; }
+
+  .pipe-arrow {
+    font-size: 22px;
+    color: var(--lgray);
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── Opportunity slide ────────────────────────────────── */
+  .opp-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .opp-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 3px solid rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .value-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 3px;
+    border: 1px solid rgba(255,255,255,0.35);
+  }
+
+  /* ── Decision badges ──────────────────────────────────── */
+  .badge {
+    display: inline-block;
+    border-radius: 6px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-green  { background: #C6F6D5; color: #22543D; }
+  .badge-red    { background: #FED7D7; color: #822727; }
+  .badge-yellow { background: #FEFCBF; color: #744210; }
+  .badge-blue   { background: #BEE3F8; color: #2A4365; }
+  .badge-gray   { background: #EDF2F7; color: #4A5568; }
+  .badge-purple { background: #E9D8FD; color: #553C9A; }
+
+  /* ── Architecture diagram ─────────────────────────────── */
+  .arch-box {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 6px;
+    text-align: center;
+    background: white;
+  }
+
+  .arch-box.core    { border-color: var(--blue);  background: #EEF4FC; }
+  .arch-box.ext     { border-color: var(--teal);  background: #E6F9F7; }
+  .arch-box.future  { border-color: var(--amber); background: #FFF8F0; border-style: dashed; }
+  .arch-box.infra   { border-color: var(--lgray); background: #F7FAFC; }
+
+  .arch-layer {
+    background: #F7FAFC;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 8px 0;
+    border: 1px solid var(--border);
+  }
+
+  .arch-layer-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--lgray);
+    margin-bottom: 10px;
+  }
+
+  .arch-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── Ext section ──────────────────────────────────────── */
+  .ext-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+
+  .ext-card h3 { color: white; font-size: 18px; margin-bottom: 8px; }
+  .ext-card p  { opacity: 0.85; font-size: 14px; line-height: 1.6; }
+
+  .status-chip {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .chip-designed { background: rgba(244,162,97,0.3); color: #FFDBB0; border: 1px solid rgba(244,162,97,0.5); }
+  .chip-built    { background: rgba(0,168,150,0.3);  color: #9EF5EF; border: 1px solid rgba(0,168,150,0.5); }
+
+  /* ── Demo code block ──────────────────────────────────── */
+  .code-block {
+    background: #1A202C;
+    color: #9AE6B4;
+    border-radius: 10px;
+    padding: 20px 24px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+
+  .code-comment { color: #718096; }
+  .code-cmd     { color: #63B3ED; }
+  .code-str     { color: #F6E05E; }
+  .code-out     { color: #68D391; }
+
+  /* ── Quote / highlight ────────────────────────────────── */
+  blockquote {
+    border-left: 4px solid var(--teal);
+    padding: 12px 20px;
+    background: white;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--gray);
+    margin: 16px 0;
+  }
+
+  /* ── List styles ──────────────────────────────────────── */
+  ul.check li, ul.bullet li {
+    padding: 6px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  ul.check li::before { content: "✓"; color: var(--teal); font-weight: 800; flex-shrink: 0; }
+  ul.bullet li::before { content: "→"; color: var(--blue); font-weight: 800; flex-shrink: 0; }
+  ul.check, ul.bullet { list-style: none; margin: 8px 0; }
+
+  /* ── Footer ───────────────────────────────────────────── */
+  .slide-footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 11px;
+    opacity: 0.5;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .slide-footer.dark { border-top-color: var(--border); color: var(--lgray); }
+
+  /* ── Agenda ───────────────────────────────────────────── */
+  .agenda-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background: white;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+
+  .agenda-time {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    min-width: 40px;
+  }
+
+  .agenda-title { font-weight: 600; font-size: 15px; flex: 1; }
+  .agenda-tag   { font-size: 11px; color: var(--lgray); }
+
+  /* ── Divider line ─────────────────────────────────────── */
+  hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* ── Print ────────────────────────────────────────────── */
+  @media print {
+    body { background: white; }
+    .slide { page-break-after: always; min-height: auto; padding: 40px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 1 · COVER                                          -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide slide-cover">
+  <div class="eyebrow" style="color:rgba(255,255,255,0.7)">Health Plan AI Innovation · 2026</div>
+  <h1>Transforming Prior Authorization<br>with AI</h1>
+  <p class="subtitle">Three AI opportunities · One working prototype · A path to enterprise scale</p>
+  <div>
+    <span class="meta-tag">Built with Claude</span>
+    <span class="meta-tag">Google ADK Ready</span>
+    <span class="meta-tag">15-min Briefing</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 2 · AGENDA                                         -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:white;">
+  <div class="section-label">Today</div>
+  <h2>15-Minute Briefing</h2>
+  <p style="color:var(--gray); margin-bottom:28px;">From problem to working prototype to enterprise roadmap</p>
+
+  <div class="agenda-item">
+    <span class="agenda-time">2 min</span>
+    <span class="agenda-title">The PA Problem — Why It Matters Now</span>
+    <span class="agenda-tag">Context</span>
+  </div>
+  <div class="agenda-item">
+    <span class="agenda-time">6 min</span>
+    <span class="agenda-title">Three AI Opportunities</span>
+    <span class="agenda-tag">Strategy</span>
+  </div>
+  <div class="agenda-item">
+    <span class="agenda-time">4 min</span>
+    <span class="agenda-title">Live Prototype — Claude PA Pipeline</span>
+    <span class="agenda-tag">Demo</span>
+  </div>
+  <div class="agenda-item">
+    <span class="agenda-time">2 min</span>
+    <span class="agenda-title">Extensible Architecture — What's Ready Next</span>
+    <span class="agenda-tag" style="color:var(--amber); font-weight:700;">✦ Key Section</span>
+  </div>
+  <div class="agenda-item">
+    <span class="agenda-time">1 min</span>
+    <span class="agenda-title">Investment, Timeline & Ask</span>
+    <span class="agenda-tag">Next Steps</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 3 · PROBLEM                                        -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:white;">
+  <div class="section-label">The Problem</div>
+  <h2>Prior Authorization Is Broken</h2>
+  <p style="color:var(--gray); margin-bottom:24px;">Physicians spend more time on paperwork than patients. Payers spend more on manual review than fraud prevention.</p>
+
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-num">41 <span style="font-size:20px">hrs</span></div>
+      <div class="stat-label">Physician time per week on PA paperwork</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">$14<span style="font-size:20px">B</span></div>
+      <div class="stat-label">Annual administrative burden, US healthcare</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--red);">12<span style="font-size:20px">d</span></div>
+      <div class="stat-label">Average PA cycle time — patients left waiting</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--amber);">78<span style="font-size:20px">%</span></div>
+      <div class="stat-label">Of reviews involve no true clinical complexity</div>
+    </div>
+  </div>
+
+  <blockquote>
+    "The majority of PA cases follow predictable patterns — yet every one is reviewed manually by a nurse or clinician. That is where AI wins."
+  </blockquote>
+
+  <div class="row">
+    <div class="col card card-red">
+      <h4>For Providers</h4>
+      <ul class="bullet">
+        <li>Fax-based submission, no status visibility</li>
+        <li>Re-submission loops consume staff time</li>
+        <li>Delayed treatment harms patients</li>
+      </ul>
+    </div>
+    <div class="col card card-amber">
+      <h4>For Health Plans</h4>
+      <ul class="bullet">
+        <li>Manual review at $8–25 per case</li>
+        <li>Inconsistent clinical criteria application</li>
+        <li>SLA risk and regulatory exposure</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 4 · OPP 1 — AUTO ADJUDICATION                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background: linear-gradient(135deg, #1B4F8A 0%, #2D6FC4 100%); color:white;">
+  <div class="opp-header">
+    <div class="opp-number">1</div>
+    <div>
+      <div class="eyebrow" style="color:rgba(255,255,255,0.6)">AI Opportunity</div>
+      <h2 style="margin-bottom:4px;">Intelligent Auto-Adjudication</h2>
+      <p style="opacity:0.8; font-size:15px;">Process 80% of PA cases without human touch</p>
+    </div>
+  </div>
+
+  <div class="pipeline">
+    <div class="pipe-step" style="background:#1a3a5c; border-color:#4A90D9; color:white;">
+      <h4 style="color:rgba(255,255,255,0.6)">Input</h4>
+      <p>Fax / PDF / Portal</p>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step" style="background:#1a3a5c; border-color:#4A90D9; color:white;">
+      <h4 style="color:rgba(255,255,255,0.6)">AI Ingestion</h4>
+      <p>Extract &amp; Structure</p>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step" style="background:#1a3a5c; border-color:#4A90D9; color:white;">
+      <h4 style="color:rgba(255,255,255,0.6)">Doc Check</h4>
+      <p>Completeness</p>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step" style="background:#1a3a5c; border-color:#4A90D9; color:white;">
+      <h4 style="color:rgba(255,255,255,0.6)">Guidelines</h4>
+      <p>Clinical Match</p>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step" style="background:rgba(0,168,150,0.3); border-color:#00C9B8; color:white;">
+      <h4 style="color:rgba(255,255,255,0.6)">Decision</h4>
+      <p>APPROVE / DENY / ESCALATE</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:8px;">
+    <div class="col">
+      <div class="ext-card">
+        <h3>What AI Does</h3>
+        <ul class="bullet" style="color:rgba(255,255,255,0.85);">
+          <li>Reads any format — fax, scanned PDF, portal text</li>
+          <li>Applies 100+ clinical guideline rules instantly</li>
+          <li>Auto-approves clear cases, flags ambiguous ones</li>
+          <li>Generates audit trail &amp; provider letters automatically</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div style="text-align:center; padding: 20px 0;">
+        <div style="font-size:48px; font-weight:800; color:#63B3ED;">80%</div>
+        <div style="font-size:14px; opacity:0.7; margin-bottom:20px;">Cases auto-adjudicated</div>
+        <div style="font-size:48px; font-weight:800; color:#9AE6B4;">Same Day</div>
+        <div style="font-size:14px; opacity:0.7; margin-bottom:20px;">vs. 12-day cycle time</div>
+        <div style="font-size:48px; font-weight:800; color:#F6E05E;">↓ 70%</div>
+        <div style="font-size:14px; opacity:0.7;">Review cost per case</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <span class="value-pill">Reduce manual touchpoints</span>
+    <span class="value-pill">Consistent clinical criteria</span>
+    <span class="value-pill">Full audit trail</span>
+    <span class="value-pill">SLA compliance</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 5 · OPP 2 — KNOWLEDGE INTELLIGENCE                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background: linear-gradient(135deg, #00A896 0%, #00C9B8 100%); color:white;">
+  <div class="opp-header">
+    <div class="opp-number">2</div>
+    <div>
+      <div class="eyebrow" style="color:rgba(255,255,255,0.6)">AI Opportunity</div>
+      <h2 style="margin-bottom:4px;">Clinical Knowledge Intelligence</h2>
+      <p style="opacity:0.8; font-size:15px;">AI-maintained guidelines so your decisions are always current</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <div class="ext-card">
+        <h3>The Hidden Problem</h3>
+        <p>Clinical guidelines change quarterly. Payer policies shift monthly. PA denial reasons often lag behind current evidence — costing plans on appeals and providers on re-submissions.</p>
+      </div>
+
+      <div class="ext-card" style="margin-top:14px;">
+        <h3>What This Looks Like</h3>
+        <ul class="bullet" style="color:rgba(255,255,255,0.85); margin-top:8px;">
+          <li>Structured knowledge wiki editable by clinical staff</li>
+          <li>AI validates consistency across guideline versions</li>
+          <li>Change impact analysis — "this update affects 340 open cases"</li>
+          <li>Auto-propagation to the adjudication pipeline</li>
+          <li>Full version history for regulatory audit</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="background:rgba(255,255,255,0.12); border-radius:12px; padding:20px; text-align:center;">
+        <div style="font-size:13px; opacity:0.7; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px;">Knowledge Flow</div>
+        <div style="background:rgba(255,255,255,0.15); border-radius:8px; padding:12px; margin-bottom:8px;">📋 Clinical Guidelines<br><span style="font-size:12px; opacity:0.7;">RA, Oncology, Neuro…</span></div>
+        <div style="font-size:20px;">↓</div>
+        <div style="background:rgba(255,255,255,0.15); border-radius:8px; padding:12px; margin-bottom:8px;">🤖 AI Validates<br><span style="font-size:12px; opacity:0.7;">Conflict detection, gaps</span></div>
+        <div style="font-size:20px;">↓</div>
+        <div style="background:rgba(255,255,255,0.15); border-radius:8px; padding:12px; margin-bottom:8px;">📡 Live Propagation<br><span style="font-size:12px; opacity:0.7;">Pipeline picks up instantly</span></div>
+        <div style="font-size:20px;">↓</div>
+        <div style="background:rgba(255,255,255,0.25); border-radius:8px; padding:12px; border: 1px solid rgba(255,255,255,0.4);">✅ Consistent Decisions<br><span style="font-size:12px; opacity:0.7;">Every case, every domain</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;">
+    <span class="value-pill">Reduce improper denials</span>
+    <span class="value-pill">Cut appeals cost</span>
+    <span class="value-pill">Regulatory defensibility</span>
+    <span class="value-pill">Non-technical team ownership</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 6 · OPP 3 — PREDICTIVE INTELLIGENCE               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background: linear-gradient(135deg, #553C9A 0%, #6B46C1 100%); color:white;">
+  <div class="opp-header">
+    <div class="opp-number">3</div>
+    <div>
+      <div class="eyebrow" style="color:rgba(255,255,255,0.6)">AI Opportunity</div>
+      <h2 style="margin-bottom:4px;">Predictive Denial Prevention</h2>
+      <p style="opacity:0.8; font-size:15px;">Catch problems before submission — not after denial</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="ext-card">
+        <h3>Today's Reality</h3>
+        <p>Providers submit. Plan denies. Provider appeals. Plan reviews. 45+ days, two teams of staff, and a patient waiting — for a predictable outcome that could have been fixed on day one.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="ext-card">
+        <h3>With Predictive AI</h3>
+        <p>Before the provider hits "submit", AI scores the likelihood of approval and surfaces exactly which fields are likely to cause denial — giving the provider one chance to fix it first.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px; background:rgba(255,255,255,0.1); border-radius:12px; padding:20px;">
+    <div style="font-size:13px; text-transform:uppercase; letter-spacing:1px; opacity:0.6; margin-bottom:12px;">Provider Portal — Pre-submission Risk Score</div>
+    <div class="row" style="align-items:center;">
+      <div class="col" style="text-align:center;">
+        <div style="font-size:52px; font-weight:800; color:#FBD38D;">72%</div>
+        <div style="font-size:13px; opacity:0.7;">Approval likelihood</div>
+      </div>
+      <div class="col-2">
+        <div style="margin-bottom:8px; padding:10px 14px; background:rgba(244,162,97,0.25); border-radius:8px; border-left:3px solid #F6AD55;">
+          ⚠️ <strong>Lab values</strong> — CRP result not included (required for RA biologic)
+        </div>
+        <div style="padding:10px 14px; background:rgba(244,162,97,0.25); border-radius:8px; border-left:3px solid #F6AD55;">
+          ⚠️ <strong>Step therapy</strong> — Only 1 prior agent documented; 2 required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;">
+    <span class="value-pill">Reduce denial rate by 30%+</span>
+    <span class="value-pill">Faster first-pass approval</span>
+    <span class="value-pill">Provider satisfaction</span>
+    <span class="value-pill">Reduce appeals burden</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 7 · PROTOTYPE — OVERVIEW                           -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:white;">
+  <div class="section-label">Prototype Demo</div>
+  <h2>Claude PA Pipeline — Working Today</h2>
+  <p style="color:var(--gray); margin-bottom:24px;">Built in 48 hours using Claude as AI co-worker. Covers Opportunity #1 end-to-end.</p>
+
+  <div class="row">
+    <div class="col-2">
+      <div class="pipeline" style="flex-direction:column; gap:8px;">
+        <div class="pipe-step ai" style="width:100%; display:flex; align-items:center; gap:16px; text-align:left;">
+          <span style="font-size:24px;">📥</span>
+          <div>
+            <h4>1. Intake Agent</h4>
+            <p style="font-weight:400; font-size:13px; color:var(--gray);">Reads raw fax + structured JSON into pipeline session</p>
+          </div>
+          <span class="badge badge-blue" style="margin-left:auto;">State: loaded</span>
+        </div>
+        <div style="text-align:center; color:var(--lgray);">↓</div>
+        <div class="pipe-step ai" style="width:100%; display:flex; align-items:center; gap:16px; text-align:left;">
+          <span style="font-size:24px;">🔍</span>
+          <div>
+            <h4>2. Ingestion Agent</h4>
+            <p style="font-weight:400; font-size:13px; color:var(--gray);">OCR/fax text → structured JSON fields + missing field flags</p>
+          </div>
+          <span class="badge badge-blue" style="margin-left:auto;">State: parsed</span>
+        </div>
+        <div style="text-align:center; color:var(--lgray);">↓</div>
+        <div class="pipe-step ai" style="width:100%; display:flex; align-items:center; gap:16px; text-align:left;">
+          <span style="font-size:24px;">📋</span>
+          <div>
+            <h4>3. Document Checker</h4>
+            <p style="font-weight:400; font-size:13px; color:var(--gray);">Completeness validation — ✅ / ⚠️ / ❌ per field</p>
+          </div>
+          <span class="badge badge-blue" style="margin-left:auto;">State: validated</span>
+        </div>
+        <div style="text-align:center; color:var(--lgray);">↓</div>
+        <div class="pipe-step ai" style="width:100%; display:flex; align-items:center; gap:16px; text-align:left;">
+          <span style="font-size:24px;">🏥</span>
+          <div>
+            <h4>4. Guidelines Verifier</h4>
+            <p style="font-weight:400; font-size:13px; color:var(--gray);">Domain router → clinical criteria → APPROVE / DENY / ESCALATE</p>
+          </div>
+          <span class="badge badge-blue" style="margin-left:auto;">State: decision</span>
+        </div>
+        <div style="text-align:center; color:var(--lgray);">↓</div>
+        <div class="pipe-step active" style="width:100%; display:flex; align-items:center; gap:16px; text-align:left;">
+          <span style="font-size:24px;">✉️</span>
+          <div>
+            <h4>5. Case Manager</h4>
+            <p style="font-weight:400; font-size:13px; color:var(--gray);">Provider letter + decision JSON saved to output</p>
+          </div>
+          <span class="badge badge-green" style="margin-left:auto;">Saved</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card card-teal">
+        <div class="card-icon">🎭</div>
+        <h3>6 Demo Scenarios</h3>
+        <table style="width:100%; font-size:13px; border-collapse:collapse; margin-top:12px;">
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:6px 0; font-weight:600;">Scenario 1</td>
+            <td><span class="badge badge-green">APPROVE</span></td>
+            <td style="color:var(--gray);">RA Biologic — all criteria met</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:6px 0; font-weight:600;">Scenario 2</td>
+            <td><span class="badge badge-gray">INCOMPLETE</span></td>
+            <td style="color:var(--gray);">Ozempic — labs missing</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:6px 0; font-weight:600;">Scenario 3</td>
+            <td><span class="badge badge-red">DENY</span></td>
+            <td style="color:var(--gray);">Remicade — CRP below threshold</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:6px 0; font-weight:600;">Scenario 4</td>
+            <td><span class="badge badge-yellow">ESCALATE</span></td>
+            <td style="color:var(--gray);">Keytruda — PD-L1 TPS ambiguous</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:6px 0; font-weight:600;">Scenario 5</td>
+            <td><span class="badge badge-yellow">SLA RISK</span></td>
+            <td style="color:var(--gray);">IVIG — 25h remaining</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 0; font-weight:600;">Scenario 6</td>
+            <td><span class="badge badge-blue">QUEUE</span></td>
+            <td style="color:var(--gray);">Morning dashboard — 312 active</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card card-blue" style="margin-top:16px;">
+        <h4>Run the Demo</h4>
+        <div class="code-block" style="font-size:12px; margin-top:8px; padding:14px;">
+<span class="code-comment"># Scenario 1 — Auto Approve</span>
+<br><span class="code-cmd">cd</span> adk_pa
+<br><span class="code-cmd">python</span> run_pa.py scenario-1-auto-approve demo-01
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 8 · DEMO WALKTHROUGH — SCENARIO 1                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide slide-dark">
+  <div class="section-label" style="color:var(--teal);">Live Demo — Scenario 1</div>
+  <h2 style="color:white; margin-bottom:4px;">Auto-Approve: Sandra Whitfield · Humira</h2>
+  <p style="color:var(--lgray); margin-bottom:24px;">PA-2026-08847 · Pacific Rheumatology Group · RA Biologic Request</p>
+
+  <div class="row">
+    <div class="col">
+      <div style="background:#1E2A3A; border-radius:10px; padding:16px 20px; margin-bottom:12px;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--lgray); margin-bottom:10px;">Raw Fax Input (what arrives)</div>
+        <pre style="font-family:monospace; font-size:12px; color:#A0AEC0; line-height:1.6; white-space:pre-wrap;">PRIOR AUTHORIZATION REQUEST
+Pacific Rheumatology Group
+Patient: Sandra Whitfield, DOB 1968-03-14
+Diagnosis: Rheumatoid Arthritis (M05.79)
+Requested: Humira 40mg/0.4mL
+Prior agents: Methotrexate 15mg (12 mo),
+              Hydroxychloroquine 400mg (8 mo)
+CRP: 28.4 mg/L | RF: Positive | Anti-CCP: Positive</pre>
+      </div>
+    </div>
+    <div class="col">
+      <div style="background:#1E2A3A; border-radius:10px; padding:16px 20px; margin-bottom:12px;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--lgray); margin-bottom:10px;">AI Pipeline Result (automatic)</div>
+        <pre style="font-family:monospace; font-size:12px; color:#9AE6B4; line-height:1.7; white-space:pre-wrap;">CLINICAL GUIDELINES VERIFICATION
+Case: PA-2026-08847
+
+✅ Diagnosis confirmed: RA (M05.79)
+✅ Step therapy: 2 agents ≥ 6 months
+✅ CRP: 28.4 mg/L (threshold: ≥ 10)
+✅ Serology: RF+ and Anti-CCP+
+✅ Provider: Board-certified rheumatologist
+
+DECISION: <span style="color:#68D391; font-weight:800;">APPROVE</span>
+Confidence: HIGH — all criteria satisfied
+Provider letter: auto-generated ✓</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:8px;">
+    <div class="col">
+      <div style="border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:16px 20px;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--lgray); margin-bottom:10px;">What Happened Inside</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
+            <span style="color:#63B3ED; font-size:18px;">①</span>
+            <span style="color:#CBD5E0;">Intake loaded raw fax + JSON in &lt;1s</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
+            <span style="color:#63B3ED; font-size:18px;">②</span>
+            <span style="color:#CBD5E0;">Ingestion extracted 12 structured fields</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
+            <span style="color:#63B3ED; font-size:18px;">③</span>
+            <span style="color:#CBD5E0;">Doc checker: all required fields present</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
+            <span style="color:#63B3ED; font-size:18px;">④</span>
+            <span style="color:#CBD5E0;">Guidelines: RA-Biologic domain, 5/5 criteria met</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
+            <span style="color:#9AE6B4; font-size:18px;">⑤</span>
+            <span style="color:#9AE6B4; font-weight:600;">APPROVE issued — decision saved to output/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col" style="text-align:center;">
+      <div style="background:rgba(0,168,150,0.15); border-radius:12px; padding:24px; border:1px solid rgba(0,168,150,0.4);">
+        <div style="font-size:60px; font-weight:800; color:#9AE6B4;">~30s</div>
+        <div style="color:var(--lgray); font-size:14px;">End-to-end decision time</div>
+        <div style="margin-top:16px; font-size:12px; color:var(--lgray);">vs. 12 days manual review</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 9 · ARCHITECTURE                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:white;">
+  <div class="section-label">Architecture</div>
+  <h2>Business-Friendly View — How It All Connects</h2>
+  <p style="color:var(--gray); margin-bottom:24px;">Designed to grow: from prototype → pilot → enterprise without rebuilding</p>
+
+  <!-- Layer diagram -->
+  <div class="arch-layer">
+    <div class="arch-layer-label">Input Channels — Any Format</div>
+    <div class="arch-row">
+      <div class="arch-box" style="min-width:110px;">📠 Fax</div>
+      <div class="arch-box" style="min-width:110px;">📄 PDF Portal</div>
+      <div class="arch-box" style="min-width:110px;">🌐 Provider API</div>
+      <div class="arch-box" style="min-width:110px;">🏥 EHR Direct</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; color:var(--lgray); font-size:20px; margin:4px 0;">↓</div>
+
+  <div class="arch-layer" style="border-color:var(--blue); background:#EEF4FC;">
+    <div class="arch-layer-label" style="color:var(--blue);">AI Pipeline — Claude / Gemini Agents</div>
+    <div class="arch-row">
+      <div class="arch-box core">📥<br><small>Intake</small></div>
+      <div style="display:flex; align-items:center; color:var(--lgray);">→</div>
+      <div class="arch-box core">🔍<br><small>Ingestion</small></div>
+      <div style="display:flex; align-items:center; color:var(--lgray);">→</div>
+      <div class="arch-box core">📋<br><small>Doc Check</small></div>
+      <div style="display:flex; align-items:center; color:var(--lgray);">→</div>
+      <div class="arch-box core">🏥<br><small>Guidelines</small></div>
+      <div style="display:flex; align-items:center; color:var(--lgray);">→</div>
+      <div class="arch-box core">✉️<br><small>Case Mgr</small></div>
+    </div>
+  </div>
+
+  <div style="text-align:center; color:var(--lgray); font-size:20px; margin:4px 0;">↓</div>
+
+  <div class="arch-layer" style="border-color:var(--teal); background:#E6F9F7;">
+    <div class="arch-layer-label" style="color:var(--teal);">Output & Integration</div>
+    <div class="arch-row">
+      <div class="arch-box ext">✅ Auto-Approve<br><small>Letter generated</small></div>
+      <div class="arch-box ext">❌ Auto-Deny<br><small>Reason documented</small></div>
+      <div class="arch-box ext">👩‍⚕️ Nurse Queue<br><small>Complex cases only</small></div>
+      <div class="arch-box ext">📊 Analytics<br><small>Daily metrics</small></div>
+    </div>
+  </div>
+
+  <div style="text-align:center; color:var(--lgray); font-size:20px; margin:4px 0;">↓</div>
+
+  <div class="arch-layer" style="border-color:var(--amber); background:#FFF8F0; border-style:dashed;">
+    <div class="arch-layer-label" style="color:var(--amber);">Extensibility (Designed ✦)</div>
+    <div class="arch-row">
+      <div class="arch-box future">🔄 Eval Loop<br><small>AI quality control</small></div>
+      <div class="arch-box future">📚 Knowledge Wiki<br><small>Live guideline updates</small></div>
+      <div class="arch-box future">👤 HITL Review<br><small>Exception escalation</small></div>
+      <div class="arch-box future">☁️ ADK / Cloud<br><small>Enterprise deploy</small></div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:20px;">
+    <div class="col card card-blue">
+      <h4>Clinical Domains — Parallel Processing</h4>
+      <p style="font-size:13px; color:var(--gray);">Each specialty runs its own AI agent concurrently — RA, Oncology, Neurology, GI, Diabetes. Add a domain = add a folder. No pipeline changes.</p>
+    </div>
+    <div class="col card card-teal">
+      <h4>Skills = Business Rules</h4>
+      <p style="font-size:13px; color:var(--gray);">Clinical criteria live in plain-English SKILL.md files. Clinical staff can read and propose updates. AI applies them. Engineering deploys in minutes.</p>
+    </div>
+    <div class="col card card-amber">
+      <h4>Enterprise on Day 1</h4>
+      <p style="font-size:13px; color:var(--gray);">Same code runs locally (prototype) and on Google Cloud (production). ADK wraps every agent in enterprise auth, logging, and scaling automatically.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 10 · EXTENSIBILITY                                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%); color:white;">
+  <div class="section-label" style="color:var(--amber);">✦ Extensibility</div>
+  <h2 style="color:white; margin-bottom:6px;">Designed &amp; Built — Ready to Activate</h2>
+  <p style="color:var(--lgray); margin-bottom:28px; font-size:15px;">
+    Three capabilities are architecturally complete in this prototype.
+    They are <em>not yet connected to live systems</em> — but the design is proven and activation is straightforward.
+  </p>
+
+  <!-- EXT 1: Eval Loop + HITL -->
+  <div class="ext-card" style="border:1px solid rgba(244,162,97,0.4); background:rgba(244,162,97,0.08);">
+    <span class="status-chip chip-designed">Designed + Built</span>
+    <h3>① Eval Loop with Human-in-the-Loop</h3>
+    <div class="row" style="margin-top:8px;">
+      <div class="col-2">
+        <p>A Teaching Assistant pattern that quality-controls every AI decision. A <strong>Golden Set</strong> of expert-labeled cases acts as the answer key. A <strong>Grader agent</strong> compares each AI decision against the golden answer. When scores diverge on high-stakes cases, the system automatically escalates to a <strong>human nurse reviewer</strong> — with full context pre-loaded.</p>
+        <p style="margin-top:8px; font-size:13px; opacity:0.7;">80% deterministic (zero tolerance) · 10% autonomous (scored on 3 dimensions) · 10% already escalated by clinical complexity</p>
+      </div>
+      <div class="col" style="font-size:13px;">
+        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:14px;">
+          <div style="margin-bottom:8px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Eval Flow</div>
+          <div>AI Decision</div>
+          <div style="color:rgba(255,255,255,0.4); margin:4px 0;">↓</div>
+          <div>Grader compares to Golden Set</div>
+          <div style="color:rgba(255,255,255,0.4); margin:4px 0;">↓</div>
+          <div>MATCH → <span style="color:#9AE6B4;">Auto-finalize</span></div>
+          <div style="color:rgba(255,255,255,0.4); margin:4px 0;"></div>
+          <div>BORDERLINE → <span style="color:#F6E05E;">Flag for review</span></div>
+          <div style="color:rgba(255,255,255,0.4); margin:4px 0;"></div>
+          <div>MISMATCH → <span style="color:#FC8181;">Nurse escalation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXT 2: Wiki -->
+  <div class="ext-card" style="border:1px solid rgba(0,168,150,0.4); background:rgba(0,168,150,0.08);">
+    <span class="status-chip chip-built">Designed + Built</span>
+    <h3>② Knowledge Wiki — Engineering Project Context</h3>
+    <div class="row" style="margin-top:8px;">
+      <div class="col-2">
+        <p>Clinical guidelines and business rules live as structured Markdown files — readable by non-engineers. When a payer changes a coverage policy, the clinical team edits one file. The AI pipeline picks it up immediately. No deployment. No code change.</p>
+        <p style="margin-top:8px; font-size:13px; opacity:0.7;">This same pattern scales to the AI engineering team: system context, onboarding docs, domain knowledge — all versioned, searchable, and injected into AI agents at runtime.</p>
+      </div>
+      <div class="col" style="font-size:13px;">
+        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:14px;">
+          <div style="margin-bottom:8px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Today</div>
+          <div>📁 skills/ra-biologic/SKILL.md</div>
+          <div>📁 skills/oncology/SKILL.md</div>
+          <div>📁 reference/guidelines.json</div>
+          <div style="margin-top:10px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Tomorrow</div>
+          <div>🌐 Internal wiki → AI reads live</div>
+          <div>📡 Payer policy feed → auto-sync</div>
+          <div>✅ Change validation before deploy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXT 3: ADK -->
+  <div class="ext-card" style="border:1px solid rgba(99,179,237,0.4); background:rgba(99,179,237,0.08);">
+    <span class="status-chip chip-built">Designed + Built</span>
+    <h3>③ Google ADK — Enterprise Deployment Path</h3>
+    <div class="row" style="margin-top:8px;">
+      <div class="col-2">
+        <p>The same Claude prototype is mirrored as a Google Agent Development Kit (ADK) project using Gemini 2.5 Pro on Vertex AI. This means: enterprise auth, SOC 2 compliant infrastructure, auto-scaling, and production observability — without rewriting any business logic.</p>
+        <p style="margin-top:8px; font-size:13px; opacity:0.7;">The SKILL.md files are identical in both. Swapping from Claude to ADK/Gemini is an infrastructure decision, not a logic rewrite.</p>
+      </div>
+      <div class="col" style="font-size:13px;">
+        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:14px;">
+          <div style="margin-bottom:8px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Prototype → Production</div>
+          <div>🖥️ Local: <span style="color:#9AE6B4;">Python + Claude</span></div>
+          <div style="color:rgba(255,255,255,0.4); margin:4px 0;">↕ same SKILL.md files</div>
+          <div>☁️ Prod: <span style="color:#63B3ED;">ADK + Vertex AI</span></div>
+          <div style="margin-top:10px; color:rgba(255,255,255,0.5); font-size:11px;">Enterprise features included:</div>
+          <div>Auth · Audit logs · Auto-scale · VPC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 11 · ROI & NEXT STEPS                             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide slide-teal">
+  <div class="eyebrow" style="color:rgba(255,255,255,0.7)">Investment & Path Forward</div>
+  <h2 style="margin-bottom:24px;">From Prototype to Pilot in 90 Days</h2>
+
+  <div class="row" style="margin-bottom:24px;">
+    <div class="col" style="background:rgba(255,255,255,0.15); border-radius:12px; padding:24px; text-align:center;">
+      <div style="font-size:13px; opacity:0.7; margin-bottom:8px;">Year 1 ROI Target</div>
+      <div style="font-size:48px; font-weight:800;">$2–4M</div>
+      <div style="font-size:13px; opacity:0.7; margin-top:4px;">Labor savings · Reduced appeals · Faster approvals</div>
+    </div>
+    <div class="col" style="background:rgba(255,255,255,0.15); border-radius:12px; padding:24px; text-align:center;">
+      <div style="font-size:13px; opacity:0.7; margin-bottom:8px;">Cases Automated</div>
+      <div style="font-size:48px; font-weight:800;">80%</div>
+      <div style="font-size:13px; opacity:0.7; margin-top:4px;">Of routine PA volume without nurse review</div>
+    </div>
+    <div class="col" style="background:rgba(255,255,255,0.15); border-radius:12px; padding:24px; text-align:center;">
+      <div style="font-size:13px; opacity:0.7; margin-bottom:8px;">Time to Pilot</div>
+      <div style="font-size:48px; font-weight:800;">90d</div>
+      <div style="font-size:13px; opacity:0.7; margin-top:4px;">First production cases with human oversight</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div style="background:rgba(255,255,255,0.12); border-radius:12px; padding:20px;">
+        <h3 style="margin-bottom:14px;">90-Day Roadmap</h3>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="background:rgba(255,255,255,0.2); border-radius:4px; padding:2px 10px; font-size:11px; font-weight:700; flex-shrink:0;">Days 1–30</span>
+            <span>Connect ingestion to real fax/portal feed. Validate on 500 historical cases against human decisions.</span>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="background:rgba(255,255,255,0.2); border-radius:4px; padding:2px 10px; font-size:11px; font-weight:700; flex-shrink:0;">Days 31–60</span>
+            <span>Activate Eval Loop + Golden Set. Add 2 more clinical domains (Oncology, Diabetes). Nurse review UI for HITL cases.</span>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="background:rgba(255,255,255,0.2); border-radius:4px; padding:2px 10px; font-size:11px; font-weight:700; flex-shrink:0;">Days 61–90</span>
+            <span>Production deploy on ADK/Vertex AI. Live pilot with one product line. Compliance review complete.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="background:rgba(255,255,255,0.12); border-radius:12px; padding:20px;">
+        <h3 style="margin-bottom:14px;">What We're Asking For</h3>
+        <ul class="check" style="color:white; font-size:14px;">
+          <li>Access to 500 anonymized historical PA cases for validation</li>
+          <li>Clinical team to build &amp; validate the Golden Set (5 days)</li>
+          <li>IT access to fax/portal ingestion endpoint</li>
+          <li>Steering committee: PA Ops + Clinical + Compliance</li>
+          <li>Engineering team of 2 for ADK deployment sprint</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>PA AI Pipeline Prototype · 2026</span>
+    <span>Built with Claude · Architecture: Google ADK + Vertex AI</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 12 · APPENDIX — TECH STACK                        -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="slide" style="background:#F7FAFC;">
+  <div class="section-label">Appendix</div>
+  <h2>Technical Proof Points</h2>
+  <p style="color:var(--gray); margin-bottom:24px; font-size:14px;">For engineering and architecture review</p>
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <h3>Prototype Stack</h3>
+        <table style="width:100%; font-size:13px; border-collapse:collapse; margin-top:10px;">
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">AI</td><td>Claude Sonnet (Vertex AI)</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">Runtime</td><td>Python 3.11 · Google ADK 1.31+</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">Orchestration</td><td>SequentialAgent (ADK)</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">State</td><td>InMemorySessionService (demo)</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">Skills</td><td>Markdown files — human-readable</td></tr>
+          <tr><td style="padding:6px 0; font-weight:600; color:var(--gray);">Output</td><td>JSON decisions + provider letters</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <h3>Production Path (ADK)</h3>
+        <table style="width:100%; font-size:13px; border-collapse:collapse; margin-top:10px;">
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">AI</td><td>Gemini 2.5 Pro (Vertex AI)</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">Auth</td><td>Google Cloud IAM + VPC</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">Scale</td><td>Auto-scaling agent pool</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">Audit</td><td>Cloud Logging · full trace</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:6px 0; font-weight:600; color:var(--gray);">HIPAA</td><td>Google BAA available</td></tr>
+          <tr><td style="padding:6px 0; font-weight:600; color:var(--gray);">State</td><td>Cloud Firestore session store</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <h3>Project Structure</h3>
+        <div class="code-block" style="font-size:11px; padding:12px;">
+<span style="color:#63B3ED;">adk_pa/</span>
+<br>&nbsp; pa_agent/
+<br>&nbsp;&nbsp;&nbsp; agent.py   <span class="code-comment">← pipeline</span>
+<br>&nbsp;&nbsp;&nbsp; tools.py   <span class="code-comment">← I/O</span>
+<br>&nbsp; skills/    <span class="code-comment">← SKILL.md files</span>
+<br>&nbsp;&nbsp;&nbsp; ingestion/
+<br>&nbsp;&nbsp;&nbsp; document-checker/
+<br>&nbsp;&nbsp;&nbsp; guidelines-verifier/
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ra-biologic/
+<br>&nbsp;&nbsp;&nbsp; case-manager/
+<br>&nbsp; data/      <span class="code-comment">← 6 scenarios</span>
+<br>&nbsp; reference/ <span class="code-comment">← guidelines</span>
+<br>&nbsp; output/    <span class="code-comment">← decisions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:16px;">
+    <div class="col card card-teal">
+      <h4>Why SKILL.md Files</h4>
+      <p style="font-size:13px; color:var(--gray);">Business rules are written in plain English by clinical staff, version-controlled by engineers, and injected into AI agents at runtime. No re-training. No model fine-tuning. Update a file → new rule in effect.</p>
+    </div>
+    <div class="col card card-blue">
+      <h4>Domain Expansion = Add a Folder</h4>
+      <p style="font-size:13px; color:var(--gray);">Today: RA Biologic (complete) + 4 stubs. Adding Oncology means writing one SKILL.md. The router auto-discovers it. Parallel multi-agent processing across domains is architecturally in place.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
