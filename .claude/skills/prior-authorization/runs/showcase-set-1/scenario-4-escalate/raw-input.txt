@@ -1,0 +1,34 @@
+------------------------------------------------------------
+METRO CANCER CENTER — ONCOLOGY PA REQUEST
+2800 Oncology Way, Suite 600 | Metro City, ST 55410
+Ph: 555-711-8800 | Fax: 555-711-8801
+------------------------------------------------------------
+DATE: July 5, 2026
+
+PATIENT: David Fontaine        DOB: 04/17/1961
+MEMBER ID: MBR-667291          PLAN: BlueCrest PPO Plus
+
+REQUESTING PHYSICIAN: Dr. Rachel Kim, MD — Medical Oncology
+NPI: 1556677889
+
+DRUG REQUESTED: Keytruda (pembrolizumab) 200mg IV every 3 weeks x 12 months
+
+DIAGNOSIS: Non-small cell lung cancer — C34.10
+
+CLINICAL NOTE:
+Mr. Fontaine is a 65-year-old male with stage IIIB NSCLC. PD-L1 testing
+performed 06/20/2026 showed TPS of 45%. Patient has a significant smoking
+history. Performance status ECOG 1. We are requesting pembrolizumab as
+part of his treatment plan.
+
+PD-L1 TPS: 45%   (tested by: PD-L1 IHC 22C3 pharmDx assay, 06/20/2026)
+
+Prior treatment history: See attached oncology notes.
+
+Medical Necessity: Pembrolizumab is indicated for NSCLC with PD-L1 expression.
+This patient meets clinical criteria for immunotherapy.
+
+Signed: Dr. Rachel Kim                          Date: 07/05/2026
+------------------------------------------------------------
+NOTE: Attached oncology note is 4 pages (not included in this fax cover)
+------------------------------------------------------------

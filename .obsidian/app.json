@@ -1,0 +1,25 @@
+{
+  "legacyEditor": false,
+  "livePreview": true,
+  "showLineNumber": true,
+  "strictLineBreaks": false,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showFrontmatter": false,
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "useTab": false,
+  "tabSize": 2,
+  "readableLineLength": true,
+  "wrapText": false,
+  "autoPairBrackets": true,
+  "autoPairMarkdownSyntax": true,
+  "vimMode": false,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "wiki",
+  "attachmentFolderPath": "raw/assets",
+  "userIgnoreFilters": [
+    ".git",
+    ".DS_Store"
+  ]
+}

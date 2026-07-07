@@ -1,0 +1,36 @@
+------------------------------------------------------------
+NEUROLOGY ASSOCIATES OF METRO
+9 Neuroscience Plaza, Suite 200 | Metro City, ST 55415
+Ph: 555-847-2200 | Fax: 555-847-2201
+------------------------------------------------------------
+PRIOR AUTHORIZATION REQUEST
+Date: July 3, 2026  09:41
+
+PATIENT
+Name:       James Holloway     DOB: 11/22/1964
+Member ID:  MBR-551087         Plan: BlueCrest PPO Plus
+
+PROVIDER
+Dr. Elena Vasquez, MD — Neurology — NPI: 1098765432
+
+TREATMENT
+IVIG (Immune Globulin IV) 30g/dose — monthly infusions
+Duration: 12 months
+
+DIAGNOSIS
+Multiple sclerosis — G35
+
+CLINICAL INFORMATION
+Patient has relapsing-remitting MS with recent exacerbation. IVIG indicated
+for acute relapse management and long-term immunomodulation.
+
+LABS: Will follow under separate cover.
+
+SPECIALIST ATTESTATION: To be provided by office.
+
+Signed: Dr. Elena Vasquez                       Date: 07/03/2026
+------------------------------------------------------------
+*** MISSING FROM THIS SUBMISSION ***
+- IgG level result (required to confirm primary immunodeficiency threshold)
+- Signed specialist attestation of medical necessity
+------------------------------------------------------------

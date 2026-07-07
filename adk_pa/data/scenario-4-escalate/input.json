@@ -1,0 +1,39 @@
+{
+  "_scenario": "Scenario 4 — Escalate to Nurse",
+  "_story": "PD-L1 TPS 45% falls between 1st-line and 2nd-line thresholds. AI cannot determine line of therapy — routes to nurse with full context pre-loaded.",
+  "_skill": "guidelines-verifier",
+
+  "case_id": "PA-2026-09318",
+  "member": {
+    "name": "David Fontaine",
+    "member_id": "MBR-667291",
+    "dob": "1961-04-17",
+    "plan": "BlueCrest PPO Plus"
+  },
+  "provider": {
+    "name": "Dr. Rachel Kim",
+    "npi": "1556677889",
+    "specialty": "Oncology",
+    "practice": "Metro Cancer Center"
+  },
+  "request": {
+    "treatment": "Pembrolizumab (Keytruda)",
+    "dose": "200mg IV",
+    "frequency": "Every 3 weeks",
+    "duration_months": 12
+  },
+  "diagnosis": {
+    "icd10": "C34.10",
+    "description": "Non-small cell lung cancer (NSCLC), unspecified"
+  },
+  "labs": [
+    { "test": "PD-L1 TPS (Tumor Proportion Score)", "result": "45%", "date": "2026-06-20",
+      "note": "AMBIGUOUS — 1st-line requires TPS ≥50%; 2nd-line requires TPS ≥1%. Patient's line of therapy is unclear from documentation." }
+  ],
+  "escalation_reason": {
+    "flag": "Ambiguous line of therapy",
+    "detail": "PD-L1 TPS 45% falls between 1st-line threshold (≥50%) and 2nd-line threshold (≥1%). Oncology note does not explicitly state whether prior platinum-based chemotherapy was attempted. Clinical judgment required to determine applicable guideline.",
+    "nurse_question": "Has this patient received prior platinum-based chemotherapy? If yes → 2nd-line guideline applies (TPS ≥1% = APPROVE). If no → 1st-line guideline applies (TPS 45% < 50% = DENY).",
+    "estimated_nurse_time": "25 minutes"
+  }
+}

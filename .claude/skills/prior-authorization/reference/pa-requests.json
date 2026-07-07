@@ -1,0 +1,1053 @@
+{
+  "_meta": {
+    "description": "Synthetic prior authorization request dataset for PA AI showcase",
+    "version": "1.0",
+    "record_count": 20,
+    "generated": "2026-07-07",
+    "note": "All patient names, member IDs, and clinical data are fictional and for demonstration only"
+  },
+  "requests": [
+    {
+      "case_id": "PA-2026-08847",
+      "submitted_date": "2026-07-01T08:15:00Z",
+      "current_stage": "APPROVED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "APPROVE",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-449201",
+        "name": "Sandra Whitfield",
+        "dob": "1978-03-14",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1234567890",
+        "name": "Dr. Patricia Nguyen",
+        "specialty": "Rheumatology",
+        "practice": "Pacific Rheumatology Group",
+        "phone": "555-821-4400",
+        "fax": "555-821-4401"
+      },
+      "request": {
+        "treatment": "Adalimumab (Humira)",
+        "hcpcs_code": "J0135",
+        "dose": "40mg/0.8mL subcutaneous",
+        "frequency": "Every 14 days",
+        "quantity": "2 pre-filled syringes per 28 days",
+        "duration_months": 12,
+        "requested_start": "2026-07-15"
+      },
+      "diagnosis": {
+        "primary_icd10": "M05.79",
+        "description": "Rheumatoid arthritis with rheumatoid factor, multiple sites",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "Rheumatoid Factor (RF)", "result": "64 IU/mL", "reference": ">20 IU/mL positive", "date": "2026-05-10", "meets_criteria": true},
+        {"test": "Anti-CCP", "result": "87 units", "reference": ">20 units positive", "date": "2026-05-10", "meets_criteria": true},
+        {"test": "CRP", "result": "18.4 mg/L", "reference": "Elevated >8 mg/L", "date": "2026-06-01", "meets_criteria": true},
+        {"test": "HBsAg (Hepatitis B)", "result": "Negative", "reference": "Negative required", "date": "2026-04-22", "meets_criteria": true},
+        {"test": "QuantiFERON-TB Gold", "result": "Negative", "reference": "Negative required", "date": "2026-04-22", "meets_criteria": true}
+      ],
+      "step_therapy": [
+        {"drug": "Methotrexate", "dose": "15mg/week", "start": "2025-05-01", "end": "2025-11-01", "duration_months": 6, "outcome": "Inadequate response — DAS28 >3.2 at 6 months"},
+        {"drug": "Hydroxychloroquine", "dose": "400mg/day", "start": "2025-11-01", "end": "2026-03-01", "duration_months": 4, "outcome": "Intolerance — GI toxicity (nausea, vomiting)"}
+      ],
+      "contraindications": [],
+      "escalation_flags": [],
+      "authorization": {
+        "auth_number": "AUTH-2026-08847",
+        "coverage_start": "2026-07-15",
+        "coverage_end": "2027-07-14",
+        "renewal_due": "2027-06-15"
+      },
+      "turnaround_hours": 0.7,
+      "notes": "Clean auto-approve. All 14 criteria passed. No nurse review needed."
+    },
+    {
+      "case_id": "PA-2026-09012",
+      "submitted_date": "2026-07-02T11:30:00Z",
+      "current_stage": "AWAITING_INFO",
+      "completeness_status": "INCOMPLETE",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-337841",
+        "name": "Marcus Webb",
+        "dob": "1961-08-05",
+        "plan": "BlueCrest HMO Select",
+        "group_number": "GRP-58310"
+      },
+      "provider": {
+        "npi": "1987654321",
+        "name": "Dr. James Okonkwo",
+        "specialty": "Endocrinology",
+        "practice": "Midwest Diabetes & Endocrine Center",
+        "phone": "555-334-7700",
+        "fax": "555-334-7701"
+      },
+      "request": {
+        "treatment": "Semaglutide (Ozempic)",
+        "hcpcs_code": "J3490",
+        "dose": "1mg subcutaneous",
+        "frequency": "Weekly",
+        "quantity": "4 pens per 28 days",
+        "duration_months": 12,
+        "requested_start": "2026-07-20"
+      },
+      "diagnosis": {
+        "primary_icd10": "E11.65",
+        "description": "Type 2 diabetes mellitus with hyperglycemia",
+        "secondary_icd10": ["E78.5"]
+      },
+      "labs": [
+        {"test": "HbA1c", "result": "MISSING", "reference": "≥7.5% required", "date": null, "meets_criteria": false},
+        {"test": "eGFR", "result": "72 mL/min/1.73m²", "reference": ">30 required", "date": "2026-06-15", "meets_criteria": true},
+        {"test": "Fasting Blood Glucose", "result": "MISSING", "reference": "Required for baseline", "date": null, "meets_criteria": false}
+      ],
+      "step_therapy": [
+        {"drug": "Metformin", "dose": "1000mg BID", "start": "2024-01-01", "end": "2026-06-01", "duration_months": 17, "outcome": "Inadequate glycemic control — HbA1c remained >8%"}
+      ],
+      "missing_items": [
+        "HbA1c result (must be ≥7.5%) — dated within 3 months",
+        "Fasting blood glucose — baseline required",
+        "Documentation of second-line agent trial (sulfonylurea or DPP-4 inhibitor) before GLP-1 initiation per step therapy policy"
+      ],
+      "contraindications": [],
+      "escalation_flags": [],
+      "awaiting_since": "2026-07-02T14:45:00Z",
+      "provider_notified": "2026-07-02T14:50:00Z",
+      "sla_deadline": "2026-07-05T14:45:00Z",
+      "turnaround_hours": null,
+      "notes": "Returned for missing labs and incomplete step therapy. Provider has not responded. SLA AT RISK."
+    },
+    {
+      "case_id": "PA-2026-09124",
+      "submitted_date": "2026-07-03T09:41:00Z",
+      "current_stage": "AWAITING_INFO",
+      "completeness_status": "INCOMPLETE",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-551087",
+        "name": "James Holloway",
+        "dob": "1964-11-22",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1098765432",
+        "name": "Dr. Elena Vasquez",
+        "specialty": "Neurology",
+        "practice": "Neurology Associates of Metro",
+        "phone": "555-847-2200",
+        "fax": "555-847-2201"
+      },
+      "request": {
+        "treatment": "Immune Globulin IV (IVIG)",
+        "hcpcs_code": "J1459",
+        "dose": "30g per infusion",
+        "frequency": "Monthly",
+        "quantity": "30g/month",
+        "duration_months": 6,
+        "requested_start": "2026-07-25"
+      },
+      "diagnosis": {
+        "primary_icd10": "G35",
+        "description": "Multiple sclerosis",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "IgG level", "result": "MISSING", "reference": "<400 mg/dL required for IVIG authorization", "date": null, "meets_criteria": false}
+      ],
+      "missing_items": [
+        "IgG serum level (must document level <400 mg/dL per IVIG criteria)",
+        "Neurologist specialist attestation of medical necessity (signed and dated)"
+      ],
+      "step_therapy": [],
+      "contraindications": [],
+      "escalation_flags": [],
+      "awaiting_since": "2026-07-03T10:02:00Z",
+      "provider_notified": "2026-07-03T10:05:00Z",
+      "sla_deadline": "2026-07-06T10:02:00Z",
+      "turnaround_hours": null,
+      "notes": "47 hours elapsed in AWAITING_INFO. At risk of SLA breach. Provider has not resubmitted."
+    },
+    {
+      "case_id": "PA-2026-09201",
+      "submitted_date": "2026-07-04T14:00:00Z",
+      "current_stage": "DENIED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "DENY",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-228741",
+        "name": "Priya Sharma",
+        "dob": "1985-06-12",
+        "plan": "BlueCrest HMO Select",
+        "group_number": "GRP-58310"
+      },
+      "provider": {
+        "npi": "1122334455",
+        "name": "Dr. Robert Chen",
+        "specialty": "Gastroenterology",
+        "practice": "Midwest GI Specialists",
+        "phone": "555-212-9900",
+        "fax": "555-212-9901"
+      },
+      "request": {
+        "treatment": "Infliximab (Remicade)",
+        "hcpcs_code": "J1745",
+        "dose": "5mg/kg IV",
+        "frequency": "Every 8 weeks (after loading doses)",
+        "quantity": "Per weight-based dosing",
+        "duration_months": 12,
+        "requested_start": "2026-07-15"
+      },
+      "diagnosis": {
+        "primary_icd10": "K50.10",
+        "description": "Crohn's disease of large intestine without complications",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "CRP", "result": "4.2 mg/L", "reference": "Elevated >8 mg/L for biologic initiation", "date": "2026-06-20", "meets_criteria": false},
+        {"test": "Fecal Calprotectin", "result": "180 μg/g", "reference": ">250 μg/g indicates active disease", "date": "2026-06-20", "meets_criteria": false},
+        {"test": "HBsAg", "result": "Negative", "reference": "Negative required", "date": "2026-05-15", "meets_criteria": true},
+        {"test": "QuantiFERON-TB", "result": "Negative", "reference": "Negative required", "date": "2026-05-15", "meets_criteria": true}
+      ],
+      "step_therapy": [
+        {"drug": "Budesonide", "dose": "9mg/day", "start": "2025-09-01", "end": "2025-12-01", "duration_months": 3, "outcome": "Symptom improvement — not a step therapy failure"}
+      ],
+      "denial_reason": {
+        "criterion": "Disease activity threshold not met",
+        "detail": "Guideline requires CRP >8 mg/L OR fecal calprotectin >250 μg/g to document active disease sufficient for biologic initiation. Submitted labs show CRP 4.2 mg/L and calprotectin 180 μg/g — both below threshold. Step therapy also incomplete: only corticosteroid documented; immunomodulator (azathioprine, 6-MP, or methotrexate) trial required.",
+        "policy": "Crohn's Biologic Therapy Criteria v3.1, Section 2.4"
+      },
+      "appeal_rights": {
+        "peer_to_peer_deadline": "2026-07-18",
+        "appeal_deadline": "2026-08-04"
+      },
+      "turnaround_hours": 3.2,
+      "notes": "Auto-denied. Low disease activity + incomplete step therapy. Provider may appeal with updated labs or additional step therapy documentation."
+    },
+    {
+      "case_id": "PA-2026-09318",
+      "submitted_date": "2026-07-04T09:00:00Z",
+      "current_stage": "NURSE_REVIEW",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "ESCALATE",
+      "auto_adjudicated": false,
+      "member": {
+        "member_id": "MBR-662034",
+        "name": "David Fontaine",
+        "dob": "1949-02-28",
+        "plan": "BlueCrest Medicare Advantage",
+        "group_number": "GRP-MA-0091"
+      },
+      "provider": {
+        "npi": "1556677889",
+        "name": "Dr. Sarah Kim",
+        "specialty": "Oncology",
+        "practice": "Regional Cancer Care Center",
+        "phone": "555-660-1100",
+        "fax": "555-660-1101"
+      },
+      "request": {
+        "treatment": "Pembrolizumab (Keytruda)",
+        "hcpcs_code": "J9271",
+        "dose": "200mg IV",
+        "frequency": "Every 21 days",
+        "quantity": "200mg per cycle",
+        "duration_months": 6,
+        "requested_start": "2026-07-12"
+      },
+      "diagnosis": {
+        "primary_icd10": "C34.12",
+        "description": "Malignant neoplasm of upper lobe, left bronchus or lung",
+        "secondary_icd10": ["Z85.118"]
+      },
+      "labs": [
+        {"test": "PD-L1 TPS", "result": "45%", "reference": "≥1% for pembrolizumab 2L+; ≥50% for 1L monotherapy", "date": "2026-06-28", "meets_criteria": "AMBIGUOUS"},
+        {"test": "EGFR/ALK mutation", "result": "Negative", "reference": "Negative required for pembrolizumab eligibility", "date": "2026-06-15", "meets_criteria": true},
+        {"test": "ECOG Performance Status", "result": "2", "reference": "0-1 for 1L monotherapy; 0-2 for combination", "date": "2026-06-28", "meets_criteria": "AMBIGUOUS"}
+      ],
+      "escalation_reason": {
+        "flag": "Ambiguous PD-L1 TPS and performance status",
+        "detail": "PD-L1 TPS of 45% does not meet the ≥50% threshold for first-line monotherapy but does meet the ≥1% threshold for second-line or combination regimens. ECOG PS 2 is acceptable for combination but not monotherapy. Clinical judgment needed to determine: (1) is this first-line or second-line? (2) Is pembrolizumab being requested as monotherapy or in combination? Documentation is ambiguous on line of therapy."
+      },
+      "nurse_queue": {
+        "assigned_to": "RN Team A",
+        "queued_at": "2026-07-04T12:31:00Z",
+        "sla_deadline": "2026-07-04T16:31:00Z",
+        "priority": "HIGH",
+        "estimated_review_minutes": 25
+      },
+      "turnaround_hours": null,
+      "notes": "Escalated for ambiguous indication and line of therapy. High priority — oncology case with time-sensitive treatment window."
+    },
+    {
+      "case_id": "PA-2026-09401",
+      "submitted_date": "2026-07-05T10:20:00Z",
+      "current_stage": "APPROVED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "APPROVE",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-774421",
+        "name": "Helen Martinez",
+        "dob": "1955-09-17",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1667788990",
+        "name": "Dr. Aaron Phillips",
+        "specialty": "Sleep Medicine",
+        "practice": "Sleep Diagnostics Institute",
+        "phone": "555-445-8800",
+        "fax": "555-445-8801"
+      },
+      "request": {
+        "treatment": "Polysomnography (Sleep Study) — In-Lab",
+        "hcpcs_code": "95810",
+        "dose": "N/A",
+        "frequency": "One-time",
+        "quantity": "1 study",
+        "duration_months": null,
+        "requested_start": "2026-07-22"
+      },
+      "diagnosis": {
+        "primary_icd10": "G47.33",
+        "description": "Obstructive sleep apnea (adult)",
+        "secondary_icd10": ["I10", "E11.9"]
+      },
+      "labs": [],
+      "clinical_documentation": [
+        {"item": "Epworth Sleepiness Scale", "result": "16/24 (severe)", "date": "2026-06-30"},
+        {"item": "STOP-Bang Questionnaire", "result": "5/8 (high risk)", "date": "2026-06-30"},
+        {"item": "BMI", "result": "34.2 kg/m²", "date": "2026-06-30"},
+        {"item": "Hypertension documented", "result": "Yes — on lisinopril", "date": "2026-06-30"}
+      ],
+      "step_therapy": [],
+      "contraindications": [],
+      "escalation_flags": [],
+      "authorization": {
+        "auth_number": "AUTH-2026-09401",
+        "coverage_start": "2026-07-05",
+        "coverage_end": "2026-10-05",
+        "renewal_due": null
+      },
+      "turnaround_hours": 0.4,
+      "notes": "Standard sleep study. STOP-Bang ≥5 plus BMI >30 meets criteria. Fast auto-approve."
+    },
+    {
+      "case_id": "PA-2026-09487",
+      "submitted_date": "2026-07-05T13:45:00Z",
+      "current_stage": "CLINICAL_REVIEW",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-883301",
+        "name": "Thomas Rivera",
+        "dob": "1970-12-03",
+        "plan": "BlueCrest HMO Select",
+        "group_number": "GRP-58310"
+      },
+      "provider": {
+        "npi": "1778899001",
+        "name": "Dr. Michelle Okafor",
+        "specialty": "Rheumatology",
+        "practice": "Arthritis & Rheumatology Specialists",
+        "phone": "555-993-2200",
+        "fax": "555-993-2201"
+      },
+      "request": {
+        "treatment": "Secukinumab (Cosentyx)",
+        "hcpcs_code": "J3590",
+        "dose": "300mg subcutaneous",
+        "frequency": "Monthly (after loading doses)",
+        "quantity": "2 × 150mg pens per month",
+        "duration_months": 12,
+        "requested_start": "2026-07-28"
+      },
+      "diagnosis": {
+        "primary_icd10": "M07.69",
+        "description": "Enteropathic arthropathies, multiple sites",
+        "secondary_icd10": ["K51.90"]
+      },
+      "labs": [
+        {"test": "ESR", "result": "58 mm/hr", "reference": "Elevated >20 indicates active inflammation", "date": "2026-06-25", "meets_criteria": true},
+        {"test": "CRP", "result": "22.1 mg/L", "reference": "Elevated >8", "date": "2026-06-25", "meets_criteria": true},
+        {"test": "HBsAg", "result": "Negative", "date": "2026-05-20", "meets_criteria": true},
+        {"test": "QuantiFERON-TB", "result": "Negative", "date": "2026-05-20", "meets_criteria": true}
+      ],
+      "step_therapy": [
+        {"drug": "Naproxen", "dose": "500mg BID", "start": "2024-06-01", "end": "2024-12-01", "duration_months": 6, "outcome": "Partial response, progression of joint erosion on X-ray"},
+        {"drug": "Sulfasalazine", "dose": "2g/day", "start": "2025-01-01", "end": "2025-07-01", "duration_months": 6, "outcome": "Inadequate response"},
+        {"drug": "Methotrexate", "dose": "20mg/week", "start": "2025-07-01", "end": "2026-01-01", "duration_months": 6, "outcome": "GI intolerance, discontinued"}
+      ],
+      "contraindications": [],
+      "escalation_flags": [],
+      "clinical_review_started": "2026-07-05T14:10:00Z",
+      "turnaround_hours": null,
+      "notes": "In auto-adjudication. 3 failed DMARDs documented. Likely APPROVE pending final criteria check."
+    },
+    {
+      "case_id": "PA-2026-09533",
+      "submitted_date": "2026-07-06T08:00:00Z",
+      "current_stage": "COMPLETENESS_CHECK",
+      "completeness_status": "IN_PROGRESS",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-994452",
+        "name": "Linda Kowalski",
+        "dob": "1968-04-19",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1889900112",
+        "name": "Dr. Frank Russo",
+        "specialty": "Orthopedics",
+        "practice": "Central Orthopedic Surgery Group",
+        "phone": "555-778-4400",
+        "fax": "555-778-4401"
+      },
+      "request": {
+        "treatment": "MRI Lumbar Spine without contrast",
+        "hcpcs_code": "72148",
+        "dose": "N/A",
+        "frequency": "One-time",
+        "quantity": "1 study",
+        "duration_months": null,
+        "requested_start": "2026-07-14"
+      },
+      "diagnosis": {
+        "primary_icd10": "M54.5",
+        "description": "Low back pain",
+        "secondary_icd10": []
+      },
+      "labs": [],
+      "clinical_documentation": [
+        {"item": "Duration of pain", "result": "8 weeks", "date": "2026-07-01"},
+        {"item": "Conservative therapy", "result": "Physical therapy 6 sessions completed", "date": "2026-06-30"},
+        {"item": "NSAID trial", "result": "Naproxen 4 weeks — incomplete relief", "date": "2026-07-01"}
+      ],
+      "missing_items_preliminary": [
+        "Neurological examination findings (required: document presence or absence of radiculopathy)",
+        "Red flag symptom screen (bowel/bladder dysfunction, unexplained weight loss, fever)"
+      ],
+      "turnaround_hours": null,
+      "notes": "Just submitted. Auto-checker running. Preliminary: likely missing neuro exam documentation."
+    },
+    {
+      "case_id": "PA-2026-09601",
+      "submitted_date": "2026-07-06T10:30:00Z",
+      "current_stage": "APPROVED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "APPROVE",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-112233",
+        "name": "Angela Brooks",
+        "dob": "1982-07-30",
+        "plan": "BlueCrest HMO Select",
+        "group_number": "GRP-58310"
+      },
+      "provider": {
+        "npi": "1990011223",
+        "name": "Dr. Kevin Walsh",
+        "specialty": "Dermatology",
+        "practice": "Advanced Dermatology Clinic",
+        "phone": "555-221-6600",
+        "fax": "555-221-6601"
+      },
+      "request": {
+        "treatment": "Dupilumab (Dupixent)",
+        "hcpcs_code": "J0222",
+        "dose": "300mg subcutaneous",
+        "frequency": "Every 2 weeks",
+        "quantity": "2 pre-filled syringes per 28 days",
+        "duration_months": 12,
+        "requested_start": "2026-07-20"
+      },
+      "diagnosis": {
+        "primary_icd10": "L20.9",
+        "description": "Atopic dermatitis, unspecified",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "IgE total", "result": "1,840 IU/mL", "reference": "Elevated >100 IU/mL", "date": "2026-06-10", "meets_criteria": true},
+        {"test": "EASI Score", "result": "32 (Severe)", "reference": "≥16 required for moderate-to-severe classification", "date": "2026-06-15", "meets_criteria": true}
+      ],
+      "step_therapy": [
+        {"drug": "Triamcinolone cream (topical CS)", "dose": "0.1% BID", "start": "2025-06-01", "end": "2025-12-01", "duration_months": 6, "outcome": "Inadequate control, skin atrophy side effect"},
+        {"drug": "Tacrolimus ointment 0.1% (topical CNI)", "dose": "BID PRN", "start": "2026-01-01", "end": "2026-06-01", "duration_months": 5, "outcome": "Inadequate response — EASI unchanged"}
+      ],
+      "contraindications": [],
+      "escalation_flags": [],
+      "authorization": {
+        "auth_number": "AUTH-2026-09601",
+        "coverage_start": "2026-07-20",
+        "coverage_end": "2027-07-19",
+        "renewal_due": "2027-06-20"
+      },
+      "turnaround_hours": 0.8,
+      "notes": "Auto-approved. Severe atopic dermatitis, 2 topical failures documented, IgE markedly elevated."
+    },
+    {
+      "case_id": "PA-2026-09688",
+      "submitted_date": "2026-07-06T14:15:00Z",
+      "current_stage": "NURSE_REVIEW",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "ESCALATE",
+      "auto_adjudicated": false,
+      "member": {
+        "member_id": "MBR-223344",
+        "name": "Robert Andersen",
+        "dob": "1958-01-09",
+        "plan": "BlueCrest Medicare Advantage",
+        "group_number": "GRP-MA-0091"
+      },
+      "provider": {
+        "npi": "1101122334",
+        "name": "Dr. Lisa Patel",
+        "specialty": "Pain Management",
+        "practice": "Comprehensive Pain Center",
+        "phone": "555-556-3300",
+        "fax": "555-556-3301"
+      },
+      "request": {
+        "treatment": "Spinal Cord Stimulator (SCS) Implant",
+        "hcpcs_code": "63685",
+        "dose": "N/A",
+        "frequency": "One-time procedure",
+        "quantity": "1 implant",
+        "duration_months": null,
+        "requested_start": "2026-08-05"
+      },
+      "diagnosis": {
+        "primary_icd10": "M54.51",
+        "description": "Vertebrogenic low back pain",
+        "secondary_icd10": ["G89.29", "M51.16"]
+      },
+      "escalation_reason": {
+        "flag": "High-cost procedure requiring specialist review",
+        "detail": "SCS implant cost exceeds $50,000 threshold. Additionally: (1) patient has prior lumbar surgery (L4-L5 fusion 2022) — post-surgical pain syndrome must be verified as indication; (2) psychological evaluation not submitted — required by policy for SCS implants; (3) failed SCS trial (screening period) not yet documented — required prior to permanent implant authorization."
+      },
+      "nurse_queue": {
+        "assigned_to": "RN Team B",
+        "queued_at": "2026-07-06T16:00:00Z",
+        "sla_deadline": "2026-07-06T20:00:00Z",
+        "priority": "STANDARD",
+        "estimated_review_minutes": 35
+      },
+      "turnaround_hours": null,
+      "notes": "Escalated: high-cost, missing psych eval, no trial period documented. Nurse to request additional documentation before approval."
+    },
+    {
+      "case_id": "PA-2026-09741",
+      "submitted_date": "2026-07-07T07:45:00Z",
+      "current_stage": "SUBMITTED",
+      "completeness_status": "PENDING",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-334455",
+        "name": "Yolanda Thompson",
+        "dob": "1991-03-25",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1212323434",
+        "name": "Dr. Hassan Al-Farsi",
+        "specialty": "Pulmonology",
+        "practice": "Regional Respiratory Care",
+        "phone": "555-884-5500",
+        "fax": "555-884-5501"
+      },
+      "request": {
+        "treatment": "Mepolizumab (Nucala)",
+        "hcpcs_code": "J2182",
+        "dose": "100mg subcutaneous",
+        "frequency": "Every 4 weeks",
+        "quantity": "1 pen per 28 days",
+        "duration_months": 12,
+        "requested_start": "2026-08-01"
+      },
+      "diagnosis": {
+        "primary_icd10": "J45.51",
+        "description": "Severe persistent asthma with acute exacerbation",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "Blood Eosinophil Count", "result": "420 cells/μL", "reference": "≥150 cells/μL required", "date": "2026-07-01", "meets_criteria": true}
+      ],
+      "turnaround_hours": null,
+      "notes": "Just received. Intake queue. Eosinophil count looks promising for mepolizumab criteria."
+    },
+    {
+      "case_id": "PA-2026-09788",
+      "submitted_date": "2026-07-07T09:00:00Z",
+      "current_stage": "DENIED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "DENY",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-445566",
+        "name": "Carlos Mendoza",
+        "dob": "1975-10-14",
+        "plan": "BlueCrest HMO Select",
+        "group_number": "GRP-58310"
+      },
+      "provider": {
+        "npi": "1323434545",
+        "name": "Dr. Barbara Singh",
+        "specialty": "Internal Medicine",
+        "practice": "Metro Primary Care Associates",
+        "phone": "555-772-1100",
+        "fax": "555-772-1101"
+      },
+      "request": {
+        "treatment": "Semaglutide (Wegovy) 2.4mg — Weight management",
+        "hcpcs_code": "J3490",
+        "dose": "2.4mg subcutaneous",
+        "frequency": "Weekly",
+        "quantity": "4 pens per 28 days",
+        "duration_months": 12,
+        "requested_start": "2026-07-15"
+      },
+      "diagnosis": {
+        "primary_icd10": "E66.01",
+        "description": "Morbid (severe) obesity due to excess calories",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "BMI", "result": "28.1 kg/m²", "reference": "≥30 required (or ≥27 with qualifying comorbidity)", "date": "2026-07-01", "meets_criteria": false}
+      ],
+      "denial_reason": {
+        "criterion": "BMI eligibility threshold not met",
+        "detail": "Semaglutide 2.4mg for weight management requires BMI ≥30 kg/m², OR BMI ≥27 kg/m² with at least one qualifying weight-related comorbidity (Type 2 diabetes, hypertension, dyslipidemia, or obstructive sleep apnea). Submitted BMI is 28.1 kg/m², and no qualifying comorbidities are documented in this submission. ICD-10 E66.01 (morbid obesity) is inconsistent with a BMI of 28.1.",
+        "policy": "Weight Management Drug Criteria v2.0, Section 1.1"
+      },
+      "appeal_rights": {
+        "peer_to_peer_deadline": "2026-07-21",
+        "appeal_deadline": "2026-08-07"
+      },
+      "turnaround_hours": 1.1,
+      "notes": "Auto-denied. BMI below threshold for indicated drug. ICD-10 code mismatch flagged."
+    },
+    {
+      "case_id": "PA-2026-09831",
+      "submitted_date": "2026-07-07T10:15:00Z",
+      "current_stage": "APPROVED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "APPROVE",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-556677",
+        "name": "Nancy Osei",
+        "dob": "1963-05-08",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1434545656",
+        "name": "Dr. Michael Torres",
+        "specialty": "Cardiology",
+        "practice": "Heart Health Specialists",
+        "phone": "555-339-7700",
+        "fax": "555-339-7701"
+      },
+      "request": {
+        "treatment": "Cardiac MRI without and with contrast",
+        "hcpcs_code": "75561",
+        "dose": "N/A",
+        "frequency": "One-time",
+        "quantity": "1 study",
+        "duration_months": null,
+        "requested_start": "2026-07-18"
+      },
+      "diagnosis": {
+        "primary_icd10": "I42.9",
+        "description": "Cardiomyopathy, unspecified",
+        "secondary_icd10": ["I50.9"]
+      },
+      "labs": [
+        {"test": "BNP", "result": "1,240 pg/mL", "reference": ">400 indicates significant heart failure", "date": "2026-07-03", "meets_criteria": true},
+        {"test": "Troponin I", "result": "0.08 ng/mL", "reference": "Elevated >0.04", "date": "2026-07-03", "meets_criteria": true},
+        {"test": "Echocardiogram EF", "result": "35%", "reference": "<40% reduced EF documented", "date": "2026-07-01", "meets_criteria": true}
+      ],
+      "clinical_documentation": [
+        {"item": "Echo report", "result": "Dilated cardiomyopathy, EF 35%, no regional wall motion abnormality", "date": "2026-07-01"},
+        {"item": "Clinical indication", "result": "Tissue characterization for cardiomyopathy evaluation prior to treatment decision", "date": "2026-07-05"}
+      ],
+      "step_therapy": [],
+      "authorization": {
+        "auth_number": "AUTH-2026-09831",
+        "coverage_start": "2026-07-07",
+        "coverage_end": "2026-10-07",
+        "renewal_due": null
+      },
+      "turnaround_hours": 0.5,
+      "notes": "Auto-approved. Cardiac MRI for cardiomyopathy with documented reduced EF and elevated BNP meets all imaging criteria."
+    },
+    {
+      "case_id": "PA-2026-09900",
+      "submitted_date": "2026-07-07T11:00:00Z",
+      "current_stage": "AWAITING_INFO",
+      "completeness_status": "INCOMPLETE",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-667788",
+        "name": "Steven Park",
+        "dob": "1980-12-31",
+        "plan": "BlueCrest HMO Select",
+        "group_number": "GRP-58310"
+      },
+      "provider": {
+        "npi": "1545656767",
+        "name": "Dr. Catherine Bloom",
+        "specialty": "Psychiatry",
+        "practice": "Behavioral Health Partners",
+        "phone": "555-113-4400",
+        "fax": "555-113-4401"
+      },
+      "request": {
+        "treatment": "Transcranial Magnetic Stimulation (TMS) — Major Depression",
+        "hcpcs_code": "90867",
+        "dose": "N/A — 30 treatment sessions",
+        "frequency": "5 days/week for 6 weeks",
+        "quantity": "30 sessions",
+        "duration_months": 2,
+        "requested_start": "2026-07-25"
+      },
+      "diagnosis": {
+        "primary_icd10": "F33.1",
+        "description": "Major depressive disorder, recurrent, moderate",
+        "secondary_icd10": []
+      },
+      "missing_items": [
+        "Documentation of ≥2 adequate antidepressant trials (minimum 6 weeks each at therapeutic dose) with documented failure — only 1 trial documented",
+        "PHQ-9 score (current severity assessment) — required for TMS indication",
+        "Psychiatric evaluation within 90 days confirming TMS candidacy"
+      ],
+      "step_therapy": [
+        {"drug": "Sertraline", "dose": "100mg/day", "start": "2025-01-01", "end": "2025-05-01", "duration_months": 4, "outcome": "Below minimum 6-week therapeutic trial"}
+      ],
+      "awaiting_since": "2026-07-07T11:45:00Z",
+      "provider_notified": "2026-07-07T11:50:00Z",
+      "sla_deadline": "2026-07-10T11:45:00Z",
+      "turnaround_hours": null,
+      "notes": "Incomplete. TMS requires ≥2 antidepressant failures. Only 1 documented and under minimum duration. PHQ-9 missing."
+    },
+    {
+      "case_id": "PA-2026-09944",
+      "submitted_date": "2026-07-07T12:30:00Z",
+      "current_stage": "CLINICAL_REVIEW",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-778899",
+        "name": "Dorothy Lewis",
+        "dob": "1945-08-12",
+        "plan": "BlueCrest Medicare Advantage",
+        "group_number": "GRP-MA-0091"
+      },
+      "provider": {
+        "npi": "1656767878",
+        "name": "Dr. Raymond Kim",
+        "specialty": "Ophthalmology",
+        "practice": "Retina & Vitreous Specialists",
+        "phone": "555-994-8800",
+        "fax": "555-994-8801"
+      },
+      "request": {
+        "treatment": "Ranibizumab (Lucentis) — Intravitreal injection",
+        "hcpcs_code": "J2778",
+        "dose": "0.5mg intravitreal",
+        "frequency": "Monthly × 3 months, then PRN",
+        "quantity": "1 vial per injection",
+        "duration_months": 12,
+        "requested_start": "2026-07-20"
+      },
+      "diagnosis": {
+        "primary_icd10": "H35.31",
+        "description": "Nonexudative age-related macular degeneration, right eye",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "OCT (Optical Coherence Tomography)", "result": "Subretinal fluid present, CRT 342μm", "date": "2026-07-02", "meets_criteria": "AMBIGUOUS"}
+      ],
+      "escalation_pending_evaluation": true,
+      "clinical_review_started": "2026-07-07T13:00:00Z",
+      "turnaround_hours": null,
+      "notes": "In review. Note: ranibizumab for dry AMD (H35.31) is off-label — wet AMD (H35.32) is the approved indication. OCT showing subretinal fluid may suggest conversion to wet AMD. Likely escalation."
+    },
+    {
+      "case_id": "PA-2026-10001",
+      "submitted_date": "2026-07-07T13:00:00Z",
+      "current_stage": "APPROVED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "APPROVE",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-889900",
+        "name": "Frank Delgado",
+        "dob": "1972-02-14",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1767878989",
+        "name": "Dr. Janet Moore",
+        "specialty": "Endocrinology",
+        "practice": "Diabetes & Metabolic Care",
+        "phone": "555-228-3300",
+        "fax": "555-228-3301"
+      },
+      "request": {
+        "treatment": "Continuous Glucose Monitor (CGM) — Dexcom G7",
+        "hcpcs_code": "A9276",
+        "dose": "N/A",
+        "frequency": "Continuous",
+        "quantity": "3 sensors per 30 days + 1 transmitter per 90 days",
+        "duration_months": 12,
+        "requested_start": "2026-07-15"
+      },
+      "diagnosis": {
+        "primary_icd10": "E10.649",
+        "description": "Type 1 diabetes mellitus with hypoglycemia without coma",
+        "secondary_icd10": []
+      },
+      "labs": [
+        {"test": "HbA1c", "result": "8.9%", "reference": "Any value — T1DM qualifies for CGM", "date": "2026-06-20", "meets_criteria": true},
+        {"test": "C-peptide", "result": "0.1 ng/mL", "reference": "<0.6 confirms insulin deficiency / T1DM", "date": "2026-05-15", "meets_criteria": true}
+      ],
+      "clinical_documentation": [
+        {"item": "Insulin therapy", "result": "Basal-bolus insulin (glargine + lispro)", "date": "2026-07-05"},
+        {"item": "Hypoglycemia episodes", "result": "3 episodes requiring assistance in past 12 months", "date": "2026-07-05"}
+      ],
+      "authorization": {
+        "auth_number": "AUTH-2026-10001",
+        "coverage_start": "2026-07-15",
+        "coverage_end": "2027-07-14",
+        "renewal_due": "2027-06-15"
+      },
+      "turnaround_hours": 0.3,
+      "notes": "Fastest auto-approve of the day. T1DM on basal-bolus insulin with documented hypoglycemia — CGM is standard of care."
+    },
+    {
+      "case_id": "PA-2026-10044",
+      "submitted_date": "2026-07-07T14:00:00Z",
+      "current_stage": "SUBMITTED",
+      "completeness_status": "PENDING",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-990011",
+        "name": "Gloria Washington",
+        "dob": "1957-11-03",
+        "plan": "BlueCrest Medicare Advantage",
+        "group_number": "GRP-MA-0091"
+      },
+      "provider": {
+        "npi": "1878989090",
+        "name": "Dr. Samuel Greene",
+        "specialty": "Hematology/Oncology",
+        "practice": "Cancer Care Network",
+        "phone": "555-441-9900",
+        "fax": "555-441-9901"
+      },
+      "request": {
+        "treatment": "Ruxolitinib (Jakafi)",
+        "hcpcs_code": "J8999",
+        "dose": "20mg oral BID",
+        "frequency": "Daily (twice daily)",
+        "quantity": "60 tablets per 30 days",
+        "duration_months": 6,
+        "requested_start": "2026-07-25"
+      },
+      "diagnosis": {
+        "primary_icd10": "D47.1",
+        "description": "Chronic myeloproliferative disease",
+        "secondary_icd10": ["D45"]
+      },
+      "labs": [
+        {"test": "JAK2 V617F mutation", "result": "Positive — 68% allele burden", "date": "2026-06-28", "meets_criteria": true},
+        {"test": "CBC — WBC", "result": "24.8 K/μL", "reference": "Elevated", "date": "2026-07-01", "meets_criteria": true},
+        {"test": "Spleen size (imaging)", "result": "19 cm — massive splenomegaly", "date": "2026-06-30", "meets_criteria": true}
+      ],
+      "turnaround_hours": null,
+      "notes": "Just submitted. Intake queue. JAK2+ with massive splenomegaly — likely to qualify for ruxolitinib (myelofibrosis/PV indication)."
+    },
+    {
+      "case_id": "PA-2026-10088",
+      "submitted_date": "2026-07-07T14:30:00Z",
+      "current_stage": "AWAITING_INFO",
+      "completeness_status": "INCOMPLETE",
+      "adjudication_result": null,
+      "auto_adjudicated": null,
+      "member": {
+        "member_id": "MBR-101122",
+        "name": "Diane Foster",
+        "dob": "1988-09-21",
+        "plan": "BlueCrest PPO Plus",
+        "group_number": "GRP-70422"
+      },
+      "provider": {
+        "npi": "1989090101",
+        "name": "Dr. Andrew Chang",
+        "specialty": "Allergy & Immunology",
+        "practice": "Allergy & Asthma Center",
+        "phone": "555-663-2200",
+        "fax": "555-663-2201"
+      },
+      "request": {
+        "treatment": "Omalizumab (Xolair)",
+        "hcpcs_code": "J2357",
+        "dose": "300mg subcutaneous",
+        "frequency": "Every 4 weeks",
+        "quantity": "1 vial per 28 days",
+        "duration_months": 12,
+        "requested_start": "2026-08-01"
+      },
+      "diagnosis": {
+        "primary_icd10": "L50.1",
+        "description": "Idiopathic urticaria",
+        "secondary_icd10": []
+      },
+      "missing_items": [
+        "Total IgE level (required for dosing calculation and eligibility) — not submitted",
+        "Documentation of antihistamine trial failure — must document H1 antihistamine at standard + high-dose × 3 months each with documented hives persistence"
+      ],
+      "step_therapy": [
+        {"drug": "Cetirizine", "dose": "10mg daily", "start": "2025-10-01", "end": "2026-01-01", "duration_months": 3, "outcome": "Partial response"},
+        {"drug": "Cetirizine", "dose": "40mg daily (4× standard dose)", "start": "2026-01-01", "end": "2026-04-01", "duration_months": 3, "outcome": "Inadequate response — hives 4+ days/week"}
+      ],
+      "awaiting_since": "2026-07-07T15:00:00Z",
+      "provider_notified": "2026-07-07T15:05:00Z",
+      "sla_deadline": "2026-07-10T15:00:00Z",
+      "turnaround_hours": null,
+      "notes": "Incomplete — missing IgE. Step therapy is actually well documented. Likely to approve once IgE is submitted."
+    },
+    {
+      "case_id": "PA-2026-10122",
+      "submitted_date": "2026-07-07T15:00:00Z",
+      "current_stage": "NURSE_REVIEW",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "ESCALATE",
+      "auto_adjudicated": false,
+      "member": {
+        "member_id": "MBR-211233",
+        "name": "Walter Hughes",
+        "dob": "1939-06-15",
+        "plan": "BlueCrest Medicare Advantage",
+        "group_number": "GRP-MA-0091"
+      },
+      "provider": {
+        "npi": "1090101212",
+        "name": "Dr. Deborah Austin",
+        "specialty": "Urology",
+        "practice": "Urology Specialists of the Metro",
+        "phone": "555-887-4400",
+        "fax": "555-887-4401"
+      },
+      "request": {
+        "treatment": "Enzalutamide (Xtandi) — Prostate Cancer",
+        "hcpcs_code": "J8999",
+        "dose": "160mg oral daily",
+        "frequency": "Daily",
+        "quantity": "120 tablets per 30 days",
+        "duration_months": 6,
+        "requested_start": "2026-07-28"
+      },
+      "diagnosis": {
+        "primary_icd10": "C61",
+        "description": "Malignant neoplasm of prostate",
+        "secondary_icd10": ["Z79.818"]
+      },
+      "labs": [
+        {"test": "PSA", "result": "42.8 ng/mL", "reference": "Rising PSA on prior ADT", "date": "2026-07-01", "meets_criteria": true},
+        {"test": "Testosterone", "result": "<20 ng/dL", "reference": "Castrate level <50 ng/dL", "date": "2026-07-01", "meets_criteria": true}
+      ],
+      "escalation_reason": {
+        "flag": "Prior therapy conflict — sequence review required",
+        "detail": "Patient has Medicare age (87 years old) and is on current ADT with leuprolide. Prior records indicate enzalutamide was prescribed at another facility in 2024 and stopped after 4 months (reason unclear — not documented). Policy requires documentation of reason for prior discontinuation before reauthorizing same agent. Possible: progression, side effects, or formulary switch. Nurse must verify 2024 treatment record."
+      },
+      "nurse_queue": {
+        "assigned_to": "RN Team A",
+        "queued_at": "2026-07-07T15:45:00Z",
+        "sla_deadline": "2026-07-07T19:45:00Z",
+        "priority": "HIGH",
+        "estimated_review_minutes": 20
+      },
+      "turnaround_hours": null,
+      "notes": "Escalated: prior enzalutamide use with undocumented discontinuation. Must rule out progression before reauthorizing."
+    },
+    {
+      "case_id": "PA-2026-10155",
+      "submitted_date": "2026-07-07T15:30:00Z",
+      "current_stage": "APPROVED",
+      "completeness_status": "COMPLETE",
+      "adjudication_result": "APPROVE",
+      "auto_adjudicated": true,
+      "member": {
+        "member_id": "MBR-321432",
+        "name": "Maria Santos",
+        "dob": "1990-04-11",
+        "plan": "BlueCrest HMO Select",
+        "group_number": "GRP-58310"
+      },
+      "provider": {
+        "npi": "1191212323",
+        "name": "Dr. Peter Harrington",
+        "specialty": "Neurology",
+        "practice": "Headache & Neurology Center",
+        "phone": "555-774-6600",
+        "fax": "555-774-6601"
+      },
+      "request": {
+        "treatment": "Fremanezumab (Ajovy) — CGRP antagonist",
+        "hcpcs_code": "J3032",
+        "dose": "225mg subcutaneous",
+        "frequency": "Monthly",
+        "quantity": "1 autoinjector per 28 days",
+        "duration_months": 6,
+        "requested_start": "2026-07-22"
+      },
+      "diagnosis": {
+        "primary_icd10": "G43.909",
+        "description": "Migraine, unspecified, not intractable, without status migrainosus",
+        "secondary_icd10": []
+      },
+      "labs": [],
+      "clinical_documentation": [
+        {"item": "Migraine frequency", "result": "18 migraine days/month (chronic migraine)", "date": "2026-06-30"},
+        {"item": "Headache diary", "result": "90-day diary submitted — confirms ≥15 headache days/month", "date": "2026-06-30"},
+        {"item": "Disability assessment (MIDAS)", "result": "Grade IV — 85 points (severe disability)", "date": "2026-06-28"}
+      ],
+      "step_therapy": [
+        {"drug": "Topiramate", "dose": "100mg/day", "start": "2024-09-01", "end": "2025-03-01", "duration_months": 6, "outcome": "Cognitive side effects — discontinued"},
+        {"drug": "Propranolol", "dose": "120mg/day", "start": "2025-04-01", "end": "2025-10-01", "duration_months": 6, "outcome": "Inadequate response — no reduction in headache days"},
+        {"drug": "Amitriptyline", "dose": "75mg/night", "start": "2025-11-01", "end": "2026-05-01", "duration_months": 6, "outcome": "Intolerance — excessive sedation"}
+      ],
+      "contraindications": [],
+      "escalation_flags": [],
+      "authorization": {
+        "auth_number": "AUTH-2026-10155",
+        "coverage_start": "2026-07-22",
+        "coverage_end": "2027-01-21",
+        "renewal_due": "2026-12-22"
+      },
+      "turnaround_hours": 0.9,
+      "notes": "Auto-approved. Chronic migraine (≥15 days/month), severe MIDAS, 3 failed preventive agents. Strong case."
+    }
+  ]
+}

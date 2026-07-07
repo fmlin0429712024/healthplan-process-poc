@@ -1,0 +1,14 @@
+--- PA MANAGER MORNING CHECK-IN — July 7, 2026 ---
+
+From: Sarah Mitchell, PA Operations Manager
+To:   PA AI System
+
+Good morning. Please give me today's queue summary.
+I want to know:
+- How many cases are active right now
+- Which cases have breached SLA
+- Which nurse review cases are about to breach
+- How are we tracking on auto-adjudication rate
+- Are we on pace for today's throughput target
+
+Thanks

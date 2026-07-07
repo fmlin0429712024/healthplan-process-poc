@@ -1,0 +1,41 @@
+{
+  "_scenario": "Scenario 3 — Auto-Deny",
+  "_story": "Labs below active-disease thresholds. Step therapy incomplete. Denied in 44 minutes with exact policy citation.",
+  "_skill": "guidelines-verifier",
+
+  "case_id": "PA-2026-09201",
+  "member": {
+    "name": "Priya Sharma",
+    "member_id": "MBR-518473",
+    "dob": "1985-11-03",
+    "plan": "BlueCrest PPO Plus"
+  },
+  "provider": {
+    "name": "Dr. Helen Park",
+    "npi": "1122334455",
+    "specialty": "Gastroenterology",
+    "practice": "Metro GI Associates"
+  },
+  "request": {
+    "treatment": "Infliximab (Remicade)",
+    "dose": "5mg/kg IV infusion",
+    "frequency": "Every 8 weeks (after induction)",
+    "duration_months": 12
+  },
+  "diagnosis": {
+    "icd10": "K50.10",
+    "description": "Crohn's disease of large intestine without complications"
+  },
+  "labs": [
+    { "test": "CRP",            "result": "4.1 mg/L",    "threshold": ">10 mg/L for active disease", "date": "2026-06-15", "pass": false, "note": "Below active-disease threshold" },
+    { "test": "Calprotectin",   "result": "180 mcg/g",   "threshold": ">250 mcg/g for active disease", "date": "2026-06-15", "pass": false, "note": "Below active-disease threshold" }
+  ],
+  "step_therapy": [
+    { "drug": "Mesalamine", "dose": "4.8g/day", "duration": "4 months", "outcome": "Partial response" }
+  ],
+  "deny_reasons": [
+    "CRP 4.1 mg/L — does not meet active-disease threshold (required >10 mg/L). Guideline: GL-CROHN-BIOLOGIC-003, Section 2.1.",
+    "Calprotectin 180 mcg/g — does not meet active-disease threshold (required >250 mcg/g). Guideline: GL-CROHN-BIOLOGIC-003, Section 2.2.",
+    "Step therapy incomplete — only one agent documented (Mesalamine). Guideline requires documented failure of Mesalamine PLUS immunomodulator (azathioprine or 6-MP)."
+  ]
+}

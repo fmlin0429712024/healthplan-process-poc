@@ -1,0 +1,42 @@
+{
+  "_scenario": "Scenario 1 — Fast Auto-Approve",
+  "_story": "Textbook complete submission. All criteria pass. Approved in 33 minutes.",
+  "_skill": "guidelines-verifier",
+
+  "case_id": "PA-2026-08847",
+  "member": {
+    "name": "Sandra Whitfield",
+    "member_id": "MBR-449201",
+    "dob": "1978-03-14",
+    "plan": "BlueCrest PPO Plus"
+  },
+  "provider": {
+    "name": "Dr. Patricia Nguyen",
+    "npi": "1234567890",
+    "specialty": "Rheumatology",
+    "practice": "Pacific Rheumatology Group"
+  },
+  "request": {
+    "treatment": "Adalimumab (Humira)",
+    "dose": "40mg subcutaneous",
+    "frequency": "Every 14 days",
+    "duration_months": 12
+  },
+  "diagnosis": {
+    "icd10": "M05.79",
+    "description": "Rheumatoid arthritis with rheumatoid factor, multiple sites"
+  },
+  "labs": [
+    { "test": "Rheumatoid Factor (RF)", "result": "64 IU/mL", "threshold": ">20", "date": "2026-05-10", "pass": true },
+    { "test": "Anti-CCP",              "result": "87 units",  "threshold": ">20", "date": "2026-05-10", "pass": true },
+    { "test": "CRP",                   "result": "18.4 mg/L", "threshold": ">8",  "date": "2026-06-01", "pass": true },
+    { "test": "Hepatitis B (HBsAg)",   "result": "Negative",  "threshold": "Negative required", "date": "2026-04-22", "pass": true },
+    { "test": "TB (QuantiFERON)",       "result": "Negative",  "threshold": "Negative required", "date": "2026-04-22", "pass": true }
+  ],
+  "step_therapy": [
+    { "drug": "Methotrexate", "dose": "15mg/week", "duration": "6 months", "period": "2025-05-01 to 2025-11-01", "outcome": "Inadequate response" },
+    { "drug": "Hydroxychloroquine", "dose": "400mg/day", "duration": "4 months", "period": "2025-11-01 to 2026-03-01", "outcome": "Intolerance (GI side effects)" }
+  ],
+  "contraindications": "None",
+  "escalation_flags": "None"
+}

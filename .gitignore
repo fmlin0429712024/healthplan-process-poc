@@ -1,0 +1,33 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Obsidian
+.obsidian/workspace*
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Large media files (optional - uncomment if you want to exclude)
+# raw/assets/*.mp4
+# raw/assets/*.mov
+# raw/assets/*.avi
+
+# Build artifacts (if you add any tools)
+tools/*.pyc
+tools/__pycache__/
+tools/node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Editor files
+*.swp
+*.swo
+.vscode/
+.idea/

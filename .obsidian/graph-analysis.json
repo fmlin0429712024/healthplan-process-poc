@@ -1,0 +1,27 @@
+{
+  "force": {
+    "repel": 200,
+    "edgeLength": 100,
+    "friction": 0.1,
+    "gravity": 0.5
+  },
+  "hoverEdgeThreshold": 5,
+  "dragEdgeThreshold": 1,
+  "minNodeRadius": 3,
+  "maxNodeRadius": 7,
+  "nodeRadius": 5,
+  "edgeWidth": 1,
+  "edgeOpacity": 0.4,
+  "edgeLabelThreshold": 4,
+  "edgeLabelSize": 8,
+  "nodeOpacity": 0.6,
+  "nodeHoverOpacity": 1,
+  "nodeLabelSize": 8,
+  "color": {
+    "background": "#000000",
+    "text": "#ffffff",
+    "node": "#ffffff",
+    "edge": "#ffffff",
+    "highlight": "#ff0000"
+  }
+}

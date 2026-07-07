@@ -1,0 +1,666 @@
+{
+  "_meta": {
+    "description": "Synthetic clinical guidelines reference data for PA AI showcase",
+    "version": "1.0",
+    "effective_date": "2026-01-01",
+    "note": "Fictional policy criteria for demonstration only — not for clinical use"
+  },
+  "guidelines": [
+    {
+      "guideline_id": "GL-RA-BIOLOGIC-001",
+      "name": "Rheumatoid Arthritis — Biologic Therapy",
+      "version": "v4.2",
+      "effective": "2026-01-01",
+      "tier": "Step Therapy",
+      "treatments_covered": [
+        "Adalimumab (Humira)",
+        "Etanercept (Enbrel)",
+        "Certolizumab (Cimzia)",
+        "Golimumab (Simponi)",
+        "Abatacept (Orencia)",
+        "Secukinumab (Cosentyx)",
+        "Upadacitinib (Rinvoq)",
+        "Tofacitinib (Xeljanz)"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["M05.60", "M05.70", "M05.79", "M06.00", "M06.09", "M05.00", "M05.09"],
+        "descriptions": ["Rheumatoid arthritis with rheumatoid factor", "RA without rheumatoid factor", "Seronegative RA"]
+      },
+      "required_labs": [
+        {
+          "test": "Rheumatoid Factor (RF)",
+          "threshold": ">20 IU/mL for seropositivity (not required if anti-CCP positive)",
+          "max_age_months": 12,
+          "required": "At least one of RF or anti-CCP"
+        },
+        {
+          "test": "Anti-CCP",
+          "threshold": ">20 units for seropositivity",
+          "max_age_months": 12,
+          "required": "At least one of RF or anti-CCP"
+        },
+        {
+          "test": "CRP or ESR",
+          "threshold": "CRP >8 mg/L OR ESR >20 mm/hr",
+          "max_age_months": 6,
+          "required": true
+        },
+        {
+          "test": "Hepatitis B surface antigen (HBsAg)",
+          "threshold": "Negative required",
+          "max_age_months": 12,
+          "required": true
+        },
+        {
+          "test": "QuantiFERON-TB Gold or PPD",
+          "threshold": "Negative required (or documented treatment if positive)",
+          "max_age_months": 12,
+          "required": true
+        }
+      ],
+      "step_therapy": {
+        "required": true,
+        "minimum_agents": 2,
+        "minimum_duration_months": 3,
+        "required_agents": [
+          {
+            "name": "Methotrexate",
+            "alternative_names": ["MTX"],
+            "min_dose": "10mg/week",
+            "min_duration_months": 3,
+            "acceptable_failure_reasons": ["Inadequate response", "Intolerance", "Contraindication"]
+          }
+        ],
+        "additional_agents_from": [
+          "Hydroxychloroquine", "Sulfasalazine", "Leflunomide"
+        ],
+        "exception": "Step therapy waived if documented contraindication to all conventional DMARDs with specialist attestation"
+      },
+      "dosing_limits": {
+        "adalimumab": {"standard": "40mg q2wk", "max": "80mg q2wk for severe cases"},
+        "etanercept": {"standard": "50mg/week"},
+        "max_coverage_months": 12,
+        "renewal_required_after_months": 12
+      },
+      "contraindications": [
+        "Active TB or untreated latent TB",
+        "Active serious infection",
+        "Active hepatitis B infection",
+        "Live vaccine within 3 months",
+        "Concurrent use of another biologic or JAK inhibitor"
+      ],
+      "escalation_flags": [
+        "Age <18 (pediatric indication — separate guideline applies)",
+        "Concurrent biologic use",
+        "History of lymphoma or other malignancy within 5 years",
+        "Demyelinating disease",
+        "NYHA Class III/IV heart failure"
+      ],
+      "auto_adjudication_eligible": true,
+      "nurse_review_cases": "ESCALATE flags, off-label indications, combination biologics"
+    },
+    {
+      "guideline_id": "GL-DM-GLP1-002",
+      "name": "Type 2 Diabetes — GLP-1 Receptor Agonists",
+      "version": "v3.0",
+      "effective": "2026-01-01",
+      "tier": "Step Therapy",
+      "treatments_covered": [
+        "Semaglutide (Ozempic) — diabetes indication",
+        "Liraglutide (Victoza)",
+        "Dulaglutide (Trulicity)",
+        "Exenatide (Bydureon)",
+        "Tirzepatide (Mounjaro)"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["E11.9", "E11.65", "E11.8", "E11.00", "E11.649"],
+        "descriptions": ["Type 2 diabetes mellitus"]
+      },
+      "required_labs": [
+        {
+          "test": "HbA1c",
+          "threshold": "≥7.5% (or ≥7.0% with documented cardiovascular risk requiring CVOT-proven agent)",
+          "max_age_months": 3,
+          "required": true
+        },
+        {
+          "test": "eGFR",
+          "threshold": ">30 mL/min/1.73m² (contraindicated in severe renal impairment)",
+          "max_age_months": 6,
+          "required": true
+        },
+        {
+          "test": "Fasting blood glucose",
+          "threshold": "Required for baseline documentation",
+          "max_age_months": 3,
+          "required": true
+        }
+      ],
+      "step_therapy": {
+        "required": true,
+        "minimum_agents": 2,
+        "minimum_duration_months": 3,
+        "required_first_line": [
+          {
+            "name": "Metformin",
+            "min_dose": "500mg BID or maximum tolerated dose",
+            "min_duration_months": 3,
+            "acceptable_failure_reasons": ["Inadequate glycemic control (HbA1c ≥7.5%)", "Intolerance", "Contraindication (eGFR <30)"]
+          }
+        ],
+        "required_second_line": [
+          "Sulfonylurea (glipizide, glimepiride, glyburide)",
+          "DPP-4 inhibitor (sitagliptin, saxagliptin)",
+          "SGLT2 inhibitor (empagliflozin, dapagliflozin)"
+        ],
+        "note": "At least one second-line agent must be documented prior to GLP-1 initiation, unless CVOT benefit is the primary clinical driver"
+      },
+      "dosing_limits": {
+        "semaglutide_ozempic": {"max_dose": "2mg weekly", "titration": "Start 0.25mg, titrate over 4 weeks"},
+        "max_coverage_months": 12
+      },
+      "contraindications": [
+        "Personal or family history of medullary thyroid carcinoma (MTC)",
+        "MEN2 (Multiple Endocrine Neoplasia type 2)",
+        "History of pancreatitis (relative contraindication — requires clinical review)",
+        "eGFR <30 mL/min/1.73m²",
+        "Type 1 diabetes (not covered under this guideline)"
+      ],
+      "escalation_flags": [
+        "History of pancreatitis",
+        "Active gallbladder disease",
+        "Simultaneous use of sulfonylurea (hypoglycemia risk — dose adjustment note required)",
+        "HbA1c >12% (may require insulin intensification instead)"
+      ],
+      "auto_adjudication_eligible": true
+    },
+    {
+      "guideline_id": "GL-OB-GLP1-003",
+      "name": "Obesity / Weight Management — GLP-1 Agonists",
+      "version": "v2.0",
+      "effective": "2026-01-01",
+      "tier": "Step Therapy",
+      "treatments_covered": [
+        "Semaglutide (Wegovy) 2.4mg — weight management indication",
+        "Liraglutide (Saxenda) 3mg — weight management indication",
+        "Tirzepatide (Zepbound)"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["E66.01", "E66.09", "E66.9"],
+        "descriptions": ["Morbid obesity", "Obesity NOS"]
+      },
+      "eligibility_criteria": {
+        "bmi_threshold_1": "BMI ≥30 kg/m² (no comorbidities required)",
+        "bmi_threshold_2": "BMI ≥27 kg/m² WITH at least one: Type 2 diabetes, Hypertension, Dyslipidemia, Obstructive sleep apnea",
+        "note": "BMI must be documented at the visit generating the request, not from historical records >6 months old"
+      },
+      "required_labs": [
+        {
+          "test": "BMI (height/weight)",
+          "threshold": "≥30 OR ≥27 with comorbidity",
+          "max_age_months": 6,
+          "required": true
+        }
+      ],
+      "step_therapy": {
+        "required": true,
+        "minimum_duration_months": 3,
+        "documented_efforts": [
+          "Caloric restriction diet program (documentation required)",
+          "Structured exercise program or physical therapy for weight management"
+        ],
+        "note": "Behavioral/lifestyle interventions must be documented prior to pharmacotherapy"
+      },
+      "contraindications": [
+        "Personal or family history of MTC",
+        "MEN2",
+        "Pregnancy (category X)",
+        "Severe renal impairment (eGFR <15)"
+      ],
+      "escalation_flags": [
+        "BMI <30 without qualifying comorbidity",
+        "Eating disorder history",
+        "Bariatric surgery within 2 years"
+      ],
+      "auto_adjudication_eligible": true
+    },
+    {
+      "guideline_id": "GL-AD-BIOLOGIC-004",
+      "name": "Atopic Dermatitis — Biologic Therapy",
+      "version": "v2.1",
+      "effective": "2026-01-01",
+      "tier": "Step Therapy",
+      "treatments_covered": [
+        "Dupilumab (Dupixent)",
+        "Tralokinumab (Adbry)",
+        "Lebrikizumab (Ebglyss)"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["L20.0", "L20.81", "L20.82", "L20.89", "L20.9"],
+        "descriptions": ["Atopic dermatitis — moderate to severe"]
+      },
+      "severity_criteria": {
+        "minimum_severity": "Moderate to severe",
+        "validated_tools": ["EASI ≥16", "IGA ≥3", "SCORAD ≥25", "DLQI ≥10 (quality of life impact)"],
+        "requirement": "At least one validated severity score required"
+      },
+      "required_labs": [
+        {
+          "test": "Total IgE (optional but supportive)",
+          "threshold": "Elevated >100 IU/mL supports atopic diagnosis",
+          "max_age_months": 12,
+          "required": false
+        },
+        {
+          "test": "EASI or IGA score (clinical assessment)",
+          "threshold": "EASI ≥16 or IGA ≥3",
+          "max_age_months": 3,
+          "required": true
+        }
+      ],
+      "step_therapy": {
+        "required": true,
+        "minimum_agents": 2,
+        "minimum_duration_months": 3,
+        "required_agents_sequence": [
+          {
+            "category": "Topical corticosteroid (TCS)",
+            "examples": ["Triamcinolone 0.1%", "Betamethasone", "Clobetasol"],
+            "min_duration_months": 3,
+            "acceptable_failure": "Inadequate control OR skin atrophy/adverse effects"
+          },
+          {
+            "category": "Topical calcineurin inhibitor (TCI) or PDE4 inhibitor",
+            "examples": ["Tacrolimus", "Pimecrolimus", "Crisaborole"],
+            "min_duration_months": 3,
+            "acceptable_failure": "Inadequate control"
+          }
+        ],
+        "note": "Oral immunosuppressants (cyclosporine, methotrexate) may substitute for second step in severe cases"
+      },
+      "dosing_limits": {
+        "dupilumab_adults": "300mg q2wk (after 600mg loading dose)",
+        "max_coverage_months": 12
+      },
+      "contraindications": [
+        "Active helminth infection (treat before initiating)"
+      ],
+      "escalation_flags": [
+        "Age <6 (pediatric — separate dosing and indications)",
+        "Concurrent use of another biologic",
+        "Ocular surface disease requiring separate evaluation"
+      ],
+      "auto_adjudication_eligible": true
+    },
+    {
+      "guideline_id": "GL-ASTHMA-BIOLOGIC-005",
+      "name": "Severe Asthma — Anti-IL-5 / Anti-IL-4 Biologics",
+      "version": "v3.1",
+      "effective": "2026-01-01",
+      "tier": "Step Therapy",
+      "treatments_covered": [
+        "Mepolizumab (Nucala)",
+        "Benralizumab (Fasenra)",
+        "Dupilumab (Dupixent) — asthma indication",
+        "Tezepelumab (Tezspire)"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["J45.51", "J45.50", "J45.901"],
+        "descriptions": ["Severe persistent asthma", "Uncontrolled asthma on ICS+LABA"]
+      },
+      "required_labs": [
+        {
+          "test": "Blood eosinophil count",
+          "threshold": "≥150 cells/μL for anti-IL-5 agents; ≥300 preferred for optimal response",
+          "max_age_months": 12,
+          "required": "For mepolizumab and benralizumab"
+        },
+        {
+          "test": "FeNO (Fractional exhaled NO)",
+          "threshold": "≥25 ppb supports eosinophilic inflammation",
+          "max_age_months": 12,
+          "required": false
+        }
+      ],
+      "step_therapy": {
+        "required": true,
+        "description": "Must be on maximally tolerated ICS+LABA ≥12 months with persistent uncontrolled asthma",
+        "required_baseline": [
+          "High-dose inhaled corticosteroid (ICS)",
+          "Long-acting beta-agonist (LABA)"
+        ],
+        "documentation_required": [
+          "≥2 asthma exacerbations requiring systemic corticosteroids in past 12 months OR",
+          "Continuous oral corticosteroid dependence OR",
+          "≥1 hospitalization for asthma in past 12 months"
+        ]
+      },
+      "dosing_limits": {
+        "mepolizumab": "100mg subcutaneous every 4 weeks",
+        "max_coverage_months": 12,
+        "response_assessment": "Required at 6 months — 50% reduction in exacerbations expected"
+      },
+      "contraindications": [
+        "Acute asthma attack (not for rescue)",
+        "Active parasitic infection"
+      ],
+      "escalation_flags": [
+        "Eosinophil count <150 cells/μL (may still qualify for tezepelumab)",
+        "History of Churg-Strauss syndrome or EGPA",
+        "Age <6"
+      ],
+      "auto_adjudication_eligible": true
+    },
+    {
+      "guideline_id": "GL-IMAGING-MRI-SPINE-006",
+      "name": "MRI Spine — Lumbar / Cervical / Thoracic",
+      "version": "v5.0",
+      "effective": "2026-01-01",
+      "tier": "Standard",
+      "treatments_covered": [
+        "MRI Lumbar Spine without contrast (72148)",
+        "MRI Lumbar Spine with contrast (72149)",
+        "MRI Cervical Spine without contrast (72141)",
+        "MRI Thoracic Spine without contrast (72146)"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["M54.5", "M54.51", "M54.4", "M47.816", "M51.16", "G54.4", "M54.2"],
+        "descriptions": ["Low back pain", "Neck pain", "Radiculopathy", "Disc herniation"]
+      },
+      "criteria": {
+        "conservative_therapy": {
+          "description": "Must have failed conservative therapy",
+          "options": [
+            "Physical therapy ≥4 weeks AND",
+            "NSAID trial ≥2 weeks"
+          ]
+        },
+        "clinical_indicators": {
+          "one_of_required": [
+            "Neurological deficit (weakness, numbness, reflex changes on exam)",
+            "Radiculopathy with dermatomal distribution",
+            "Suspicion of serious pathology (red flags)"
+          ]
+        },
+        "red_flags_immediate_approval": [
+          "Cauda equina syndrome (bowel/bladder dysfunction + saddle anesthesia)",
+          "Suspicion of spinal cord compression",
+          "Cancer history with new back pain",
+          "Unexplained fever + back pain (discitis/osteomyelitis)",
+          "Unexplained weight loss + back pain",
+          "Fracture after trauma",
+          "Age >70 with acute onset (compression fracture risk)"
+        ]
+      },
+      "timeline": {
+        "acute_pain_wait": "4-6 weeks of conservative therapy before routine MRI",
+        "exception": "Red flags allow immediate MRI without wait period"
+      },
+      "contraindications_for_procedure": [
+        "Implanted pacemaker (non-MRI-conditional)",
+        "Cochlear implant (non-MRI-conditional)",
+        "Ferromagnetic foreign body"
+      ],
+      "escalation_flags": [
+        "Request within 4 weeks of onset without red flags",
+        "Third MRI in 12 months for same region"
+      ],
+      "auto_adjudication_eligible": true
+    },
+    {
+      "guideline_id": "GL-MIGRAINE-CGRP-007",
+      "name": "Chronic Migraine — CGRP Monoclonal Antibodies",
+      "version": "v2.2",
+      "effective": "2026-01-01",
+      "tier": "Step Therapy",
+      "treatments_covered": [
+        "Erenumab (Aimovig)",
+        "Fremanezumab (Ajovy)",
+        "Galcanezumab (Emgality)",
+        "Eptinezumab (Vyepti) — IV infusion"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["G43.909", "G43.919", "G43.709", "G43.001", "G43.309"],
+        "descriptions": ["Migraine (episodic or chronic)", "Chronic migraine ≥15 headache days/month"]
+      },
+      "severity_criteria": {
+        "minimum": "≥4 migraine days/month for episodic, OR ≥15 headache days/month (≥8 migraine features) for chronic"
+      },
+      "required_documentation": [
+        {
+          "item": "Headache diary or migraine frequency documentation",
+          "requirement": "≥90-day record documenting migraine frequency",
+          "required": true
+        },
+        {
+          "item": "Disability scale",
+          "requirement": "MIDAS or HIT-6 score documenting significant impairment",
+          "required": true
+        }
+      ],
+      "step_therapy": {
+        "required": true,
+        "minimum_agents": 2,
+        "minimum_duration_months": 3,
+        "required_agents_from": [
+          "Topiramate (anticonvulsant preventive)",
+          "Valproate/divalproex (anticonvulsant preventive)",
+          "Propranolol or metoprolol (beta-blocker)",
+          "Amitriptyline or nortriptyline (tricyclic antidepressant)",
+          "Venlafaxine (SNRI preventive)",
+          "Candesartan or lisinopril (ARB/ACE preventive)"
+        ],
+        "acceptable_failure": "Inadequate response (<50% reduction in migraine days) OR intolerance after adequate trial (≥3 months at therapeutic dose)"
+      },
+      "dosing_limits": {
+        "fremanezumab": "225mg monthly OR 675mg quarterly",
+        "max_coverage_months": 6,
+        "response_assessment": "Required at 3 months — 50% reduction in migraine days expected for continuation"
+      },
+      "contraindications": [
+        "Pregnancy (category C — use only if benefit outweighs risk)",
+        "Known hypersensitivity to CGRP class"
+      ],
+      "escalation_flags": [
+        "Medication overuse headache (MOH) — must be addressed first",
+        "Age <18"
+      ],
+      "auto_adjudication_eligible": true
+    },
+    {
+      "guideline_id": "GL-IBD-BIOLOGIC-008",
+      "name": "Inflammatory Bowel Disease — Biologic Therapy",
+      "version": "v3.1",
+      "effective": "2026-01-01",
+      "tier": "Step Therapy",
+      "treatments_covered": [
+        "Infliximab (Remicade)",
+        "Adalimumab (Humira) — IBD indication",
+        "Vedolizumab (Entyvio)",
+        "Ustekinumab (Stelara) — IBD indication",
+        "Risankizumab (Skyrizi) — IBD indication"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["K50.00", "K50.10", "K50.80", "K51.00", "K51.90", "K50.90"],
+        "descriptions": ["Crohn's disease", "Ulcerative colitis"]
+      },
+      "disease_activity_criteria": {
+        "crohn_active": [
+          "CRP >8 mg/L OR ESR >20 mm/hr AND",
+          "Fecal calprotectin >250 μg/g OR",
+          "CDAI >220 OR",
+          "Colonoscopy with documented active inflammation"
+        ],
+        "uc_active": [
+          "Mayo score ≥6 (moderate-severe)",
+          "Endoscopic Mayo subscore ≥2"
+        ]
+      },
+      "required_labs": [
+        {
+          "test": "CRP",
+          "threshold": ">8 mg/L for active disease (or documented endoscopic activity)",
+          "max_age_months": 3,
+          "required": true
+        },
+        {
+          "test": "Fecal calprotectin",
+          "threshold": ">250 μg/g for active intestinal inflammation",
+          "max_age_months": 3,
+          "required": "If CRP borderline"
+        },
+        {
+          "test": "HBsAg",
+          "threshold": "Negative required",
+          "max_age_months": 12,
+          "required": true
+        },
+        {
+          "test": "QuantiFERON-TB",
+          "threshold": "Negative required",
+          "max_age_months": 12,
+          "required": true
+        }
+      ],
+      "step_therapy": {
+        "required": true,
+        "crohn_sequence": [
+          "Corticosteroid (prednisone/budesonide) — for induction only, not step therapy",
+          "Immunomodulator: azathioprine (AZA), 6-mercaptopurine (6-MP), or methotrexate (≥3 months)",
+          "THEN: biologic initiation"
+        ],
+        "uc_sequence": [
+          "5-ASA agents (mesalamine) — for mild-moderate",
+          "Corticosteroid",
+          "Immunomodulator (AZA or 6-MP) ≥3 months",
+          "THEN: biologic initiation"
+        ],
+        "exception": "Severe/fulminant disease — direct biologic initiation acceptable with specialist attestation"
+      },
+      "contraindications": [
+        "Active serious infection including TB",
+        "Active hepatitis B",
+        "NYHA Class III/IV heart failure (for TNF inhibitors)",
+        "Concurrent biologic"
+      ],
+      "escalation_flags": [
+        "Pediatric (<18) — dosing differences",
+        "Prior biologic failure — may qualify for different mechanism",
+        "Cancer history — risk-benefit required"
+      ],
+      "auto_adjudication_eligible": true
+    },
+    {
+      "guideline_id": "GL-ONCO-IMMUNO-009",
+      "name": "Oncology — PD-1/PD-L1 Checkpoint Inhibitors",
+      "version": "v4.0",
+      "effective": "2026-01-01",
+      "tier": "Complex/High-Cost",
+      "treatments_covered": [
+        "Pembrolizumab (Keytruda)",
+        "Nivolumab (Opdivo)",
+        "Atezolizumab (Tecentriq)",
+        "Durvalumab (Imfinzi)",
+        "Cemiplimab (Libtayo)"
+      ],
+      "approved_indications": {
+        "by_cancer_type": {
+          "nsclc": {
+            "icd10": ["C34.10", "C34.11", "C34.12", "C34.32"],
+            "criteria": "PD-L1 TPS ≥1% for 2L+; ≥50% for 1L monotherapy; EGFR/ALK negative"
+          },
+          "melanoma": {
+            "icd10": ["C43.9", "C43.51"],
+            "criteria": "Stage III unresectable or Stage IV; no specific PD-L1 requirement"
+          },
+          "head_neck": {
+            "icd10": ["C10.9", "C09.9", "C14.0"],
+            "criteria": "Recurrent/metastatic HNSCC; PD-L1 CPS ≥1"
+          }
+        }
+      },
+      "required_labs": [
+        {
+          "test": "PD-L1 expression (TPS or CPS)",
+          "threshold": "Varies by indication and line of therapy",
+          "max_age_months": 24,
+          "required": "For most indications"
+        },
+        {
+          "test": "EGFR / ALK / ROS1 mutation status",
+          "threshold": "Negative required for NSCLC 1L monotherapy",
+          "max_age_months": 24,
+          "required": "NSCLC only"
+        },
+        {
+          "test": "MSI / MMR status (optional)",
+          "threshold": "MSI-H / dMMR supports pembrolizumab eligibility regardless of PD-L1",
+          "max_age_months": 24,
+          "required": false
+        }
+      ],
+      "dosing_limits": {
+        "pembrolizumab": "200mg IV q3wk OR 400mg IV q6wk",
+        "max_coverage_months": 6,
+        "response_assessment": "CT scan required at 3 months"
+      },
+      "escalation_flags": [
+        "PD-L1 TPS 1-49% for NSCLC 1L (ambiguous — combination therapy may be indicated)",
+        "ECOG PS ≥2",
+        "Off-label indication",
+        "Prior checkpoint inhibitor with immune-related adverse events (irAE) history",
+        "Active autoimmune disease requiring systemic treatment",
+        "Prior organ transplant",
+        "Age >80 (benefit-risk)"
+      ],
+      "auto_adjudication_eligible": false,
+      "note": "High-cost and clinical complexity — all oncology immunotherapy cases require nurse/physician review. Auto-adjudication not enabled."
+    },
+    {
+      "guideline_id": "GL-SLEEP-STUDY-010",
+      "name": "Polysomnography and Sleep Disorders — Diagnostic Studies",
+      "version": "v3.2",
+      "effective": "2026-01-01",
+      "tier": "Standard",
+      "treatments_covered": [
+        "Attended polysomnography in-lab (95810)",
+        "Home sleep apnea test (HSAT) (G0399)",
+        "CPAP titration study (95811)"
+      ],
+      "approved_indications": {
+        "icd10_codes": ["G47.33", "G47.39", "G47.30", "G47.61", "G47.411"],
+        "descriptions": ["Obstructive sleep apnea", "Central sleep apnea", "Narcolepsy evaluation", "REM behavior disorder"]
+      },
+      "criteria": {
+        "clinical_screening_tools": {
+          "stop_bang": {
+            "threshold": "≥3 for moderate-high risk; ≥5 for high risk",
+            "required": "Preferred screening tool"
+          },
+          "epworth_sleepiness_scale": {
+            "threshold": "≥10 indicates excessive daytime sleepiness",
+            "required": "Supportive"
+          }
+        },
+        "additional_risk_factors": [
+          "BMI ≥30 kg/m²",
+          "Neck circumference >17 inches (male) or >16 inches (female)",
+          "Hypertension",
+          "Reported witnessed apneas"
+        ],
+        "minimum_criteria": "STOP-Bang ≥3 AND at least one additional risk factor"
+      },
+      "in_lab_vs_home_test": {
+        "home_sleep_test_appropriate": "Uncomplicated moderate-high risk OSA (STOP-Bang ≥3, no comorbidities)",
+        "in_lab_required": [
+          "STOP-Bang ≥5 with complex comorbidities",
+          "Suspected non-OSA sleep disorder (central apnea, narcolepsy, RLS)",
+          "Home test failed/inconclusive",
+          "Severe cardiopulmonary disease",
+          "Neuromuscular disease"
+        ]
+      },
+      "auto_adjudication_eligible": true
+    }
+  ]
+}

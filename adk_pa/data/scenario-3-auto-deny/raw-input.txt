@@ -1,0 +1,37 @@
+------------------------------------------------------------
+METRO GI ASSOCIATES
+1200 Gastro Blvd, Suite 410 | Metro City, ST 55407
+Ph: 555-920-3300 | Fax: 555-920-3301
+------------------------------------------------------------
+PRIOR AUTHORIZATION REQUEST
+Date: July 4, 2026
+
+PATIENT
+Name:    Priya Sharma     DOB: 11/03/1985
+ID:      MBR-518473       Plan: BlueCrest PPO Plus
+
+PROVIDER
+Dr. Helen Park, MD — Gastroenterology — NPI: 1122334455
+
+REQUESTED TREATMENT
+Remicade (infliximab) 5mg/kg IV infusion
+Every 8 weeks following induction doses
+Duration: 12 months
+
+DIAGNOSIS
+Crohn's disease of large intestine
+ICD-10: K50.10
+
+LAB RESULTS (collected 06/15/2026)
+CRP:          4.1 mg/L
+Calprotectin: 180 mcg/g
+
+PRIOR TREATMENTS
+Mesalamine 4.8g/day x 4 months — partial response only
+
+NOTES FROM PHYSICIAN:
+Patient continues to have intermittent symptoms. Requesting biologic therapy
+to achieve better disease control.
+
+Signed: Dr. Helen Park                          Date: 07/04/2026
+------------------------------------------------------------

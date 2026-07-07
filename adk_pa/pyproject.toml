@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pa-adk-agent"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "google-adk>=1.31.0",
+    "google-genai>=1.0.0",
+    "python-dotenv>=1.0.0",
+]

@@ -1,0 +1,51 @@
+------------------------------------------------------------
+PACIFIC RHEUMATOLOGY GROUP
+4201 Westfield Ave, Suite 300 | Metro City, ST 55401
+Ph: 555-821-4400 | Fax: 555-821-4401
+------------------------------------------------------------
+PRIOR AUTHORIZATION REQUEST
+Date: July 1, 2026
+
+PATIENT INFORMATION
+Name:          Sandra Whitfield
+Date of Birth: 03/14/1978
+Member ID:     MBR-449201
+Plan:          BlueCrest PPO Plus
+Group #:       GRP-70422
+
+ORDERING PROVIDER
+Name:          Dr. Patricia Nguyen, MD FACR
+NPI:           1234567890
+Specialty:     Rheumatology
+
+TREATMENT REQUESTED
+Drug:          Humira (adalimumab) 40mg/0.8mL subcutaneous injection
+Frequency:     Every 14 days
+Quantity:      2 pre-filled syringes per 28 days
+Duration:      12 months
+Start Date:    July 15, 2026
+
+DIAGNOSIS
+Primary:       Rheumatoid arthritis with rheumatoid factor, multiple sites
+ICD-10:        M05.79
+
+LABORATORY RESULTS
+- Rheumatoid Factor (RF):    64 IU/mL  [Ref: >20 = positive]  Collected: 05/10/2026
+- Anti-CCP:                  87 units  [Ref: >20 = positive]  Collected: 05/10/2026
+- CRP:                       18.4 mg/L [Ref: elevated >8]     Collected: 06/01/2026
+- Hepatitis B surface Ag:    Negative  [Required: negative]   Collected: 04/22/2026
+- QuantiFERON TB Gold:       Negative  [Required: negative]   Collected: 04/22/2026
+
+STEP THERAPY HISTORY
+1. Methotrexate 15mg/week — May 2025 to Nov 2025 (6 months) — Inadequate response
+2. Hydroxychloroquine 400mg/day — Nov 2025 to Mar 2026 (4 months) — GI intolerance
+
+CONTRAINDICATIONS: None known
+CONCURRENT BIOLOGICS: None
+
+ATTESTATION
+I attest that the above information is accurate and that this treatment is
+medically necessary for this patient.
+
+Signature: Dr. Patricia Nguyen                  Date: 07/01/2026
+------------------------------------------------------------

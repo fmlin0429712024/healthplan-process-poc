@@ -1,0 +1,39 @@
+{
+  "_scenario": "Scenario 2 — Incomplete Submission",
+  "_story": "Provider submitted without required labs and only one step therapy agent. Returned immediately with specific checklist.",
+  "_skill": "document-checker",
+
+  "case_id": "PA-2026-09012",
+  "member": {
+    "name": "Marcus Webb",
+    "member_id": "MBR-302847",
+    "dob": "1969-07-22",
+    "plan": "BlueCrest HMO Select"
+  },
+  "provider": {
+    "name": "Dr. James Okonkwo",
+    "npi": "1987654321",
+    "specialty": "Endocrinology",
+    "practice": "Midwest Diabetes & Endocrine Center"
+  },
+  "request": {
+    "treatment": "Semaglutide (Ozempic)",
+    "dose": "0.5mg subcutaneous",
+    "frequency": "Weekly",
+    "duration_months": 12
+  },
+  "diagnosis": {
+    "icd10": "E11.9",
+    "description": "Type 2 diabetes mellitus without complications"
+  },
+  "labs": [],
+  "step_therapy": [
+    { "drug": "Metformin", "dose": "1000mg twice daily", "duration": "12 months", "outcome": "Inadequate glycemic control" }
+  ],
+  "missing_items": [
+    "HbA1c lab result (required: ≥7.5% within last 6 months) — NOT SUBMITTED",
+    "Fasting glucose lab result (required within last 6 months) — NOT SUBMITTED",
+    "Second-line step therapy agent (required: documented trial of metformin PLUS one of: SGLT-2 inhibitor, DPP-4 inhibitor, or sulfonylurea) — ONLY METFORMIN DOCUMENTED"
+  ],
+  "attestation_signed": false
+}

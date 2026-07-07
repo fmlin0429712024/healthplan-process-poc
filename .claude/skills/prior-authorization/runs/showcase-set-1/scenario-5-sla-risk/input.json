@@ -1,0 +1,48 @@
+{
+  "_scenario": "Scenario 5 — SLA At Risk + Call Script",
+  "_story": "Provider has not responded in 47 hours. 25 hours left before auto-deny. System surfaces the risk and generates a ready-to-use call script.",
+  "_skill": "case-manager",
+
+  "case_id": "PA-2026-09124",
+  "member": {
+    "name": "James Holloway",
+    "member_id": "MBR-551087",
+    "dob": "1964-11-22",
+    "plan": "BlueCrest PPO Plus"
+  },
+  "provider": {
+    "name": "Dr. Elena Vasquez",
+    "npi": "1098765432",
+    "specialty": "Neurology",
+    "practice": "Neurology Associates of Metro",
+    "phone": "555-847-2200",
+    "fax": "555-847-2201"
+  },
+  "request": {
+    "treatment": "IVIG (Immune Globulin IV)",
+    "dose": "30g/dose",
+    "frequency": "Monthly",
+    "duration_months": 12
+  },
+  "diagnosis": {
+    "icd10": "G35",
+    "description": "Multiple sclerosis"
+  },
+  "current_stage": "AWAITING_INFO",
+  "sla": {
+    "total_hours_allowed": 72,
+    "hours_elapsed": 47,
+    "hours_remaining": 25,
+    "status": "AT_RISK",
+    "auto_deny_deadline": "2026-07-06T10:02:00Z"
+  },
+  "missing_items": [
+    "IgG level lab result showing value <400 mg/dL (confirms primary immunodeficiency indication)",
+    "Neurology specialist attestation of medical necessity (signed)"
+  ],
+  "communications_sent": [
+    { "date": "2026-07-03T10:05:00Z", "type": "Missing info notice", "channel": "Provider portal" },
+    { "date": "2026-07-04T10:05:00Z", "type": "24-hour reminder", "channel": "Provider portal" }
+  ],
+  "provider_response": "None — no portal activity since initial submission"
+}

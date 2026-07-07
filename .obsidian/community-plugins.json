@@ -1,0 +1,6 @@
+{
+  "plugins": [
+    "dataview",
+    "graph-analysis"
+  ]
+}

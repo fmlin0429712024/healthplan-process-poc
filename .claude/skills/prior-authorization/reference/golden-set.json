@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "description": "Golden set — pre-labeled PA cases with known-correct decisions for eval and grading",
+    "purpose": "Used by _5-eval sub-skill to grade AI decisions against expert-labeled ground truth",
+    "labeled_by": "Senior Clinical Reviewer Panel",
+    "version": "1.0",
+    "note": "Fictional cases for PoC demonstration only"
+  },
+  "golden_cases": [
+    {
+      "case_id": "PA-2026-08847",
+      "scenario": "scenario-1-auto-approve",
+      "expected_decision": "APPROVE",
+      "decision_type": "deterministic",
+      "difficulty": "easy",
+      "rationale": "All 14 criteria met. Clear RA biologic case with complete step therapy, labs within range, no contraindications. Should never require human review.",
+      "labeled_by": "Dr. A. Chen, Senior Medical Director",
+      "labeled_date": "2026-01-15",
+      "hitl_threshold": "MISMATCH_only"
+    },
+    {
+      "case_id": "PA-2026-09012",
+      "scenario": "scenario-2-incomplete",
+      "expected_decision": "RETURN_TO_PROVIDER",
+      "decision_type": "deterministic",
+      "difficulty": "easy",
+      "rationale": "Missing HbA1c, fasting glucose, and second-line step therapy. Document checker should catch all three. No clinical judgment required — purely a completeness failure.",
+      "missing_items_expected": [
+        "HbA1c within 6 months",
+        "Fasting glucose within 6 months",
+        "Second-line step therapy agent documented"
+      ],
+      "labeled_by": "Dr. A. Chen, Senior Medical Director",
+      "labeled_date": "2026-01-15",
+      "hitl_threshold": "MISMATCH_only"
+    },
+    {
+      "case_id": "PA-2026-09201",
+      "scenario": "scenario-3-auto-deny",
+      "expected_decision": "DENY",
+      "decision_type": "deterministic",
+      "difficulty": "easy",
+      "deny_reasons_expected": [
+        "CRP 4.1 mg/L below active-disease threshold (>10 mg/L)",
+        "Calprotectin 180 mcg/g below active-disease threshold (>250 mcg/g)",
+        "Step therapy incomplete — only Mesalamine documented, immunomodulator required"
+      ],
+      "rationale": "Both disease-activity markers below threshold. Hard-stop denial. No clinical ambiguity.",
+      "labeled_by": "Dr. A. Chen, Senior Medical Director",
+      "labeled_date": "2026-01-15",
+      "hitl_threshold": "MISMATCH_only"
+    },
+    {
+      "case_id": "PA-2026-09318",
+      "scenario": "scenario-4-escalate",
+      "expected_decision": "ESCALATE",
+      "decision_type": "autonomous",
+      "difficulty": "hard",
+      "rationale": "PD-L1 TPS 45% is genuinely ambiguous — falls between 1st-line threshold (≥50%) and 2nd-line threshold (≥1%). Line of therapy not documented. AI correctly cannot resolve this without human clinical judgment.",
+      "escalation_reason_expected": "Ambiguous line of therapy — PD-L1 TPS 45% requires clinical determination of whether patient is 1st-line or 2nd-line",
+      "acceptable_decisions": ["ESCALATE"],
+      "unacceptable_decisions": ["APPROVE", "DENY"],
+      "labeled_by": "Dr. R. Patel, Oncology Advisor",
+      "labeled_date": "2026-01-20",
+      "hitl_threshold": "ANY_deviation"
+    },
+    {
+      "case_id": "PA-2026-09124",
+      "scenario": "scenario-5-sla-risk",
+      "expected_decision": "AWAITING_INFO",
+      "decision_type": "deterministic",
+      "difficulty": "medium",
+      "rationale": "Correct stage is AWAITING_INFO. Case manager should flag AT RISK (47h of 72h elapsed) and generate call script. No clinical decision needed — this is a workflow management case.",
+      "expected_sla_status": "AT_RISK",
+      "expected_actions": ["Generate call script", "Flag for human outreach"],
+      "labeled_by": "Sarah Mitchell, PA Operations Manager",
+      "labeled_date": "2026-01-15",
+      "hitl_threshold": "MISMATCH_only"
+    },
+    {
+      "case_id": "QUEUE-2026-07-07",
+      "scenario": "scenario-6-queue-summary",
+      "expected_decision": "SUMMARY_REPORT",
+      "decision_type": "deterministic",
+      "difficulty": "easy",
+      "rationale": "Queue summary is a reporting function — no clinical judgment involved. Eval checks that the 3 breached cases and 6 at-risk nurse cases are correctly surfaced.",
+      "expected_highlights": [
+        "3 AWAITING_INFO cases SLA breached",
+        "6 NURSE_REVIEW cases at risk",
+        "Auto-adjudication rate 72% (on target)"
+      ],
+      "labeled_by": "Sarah Mitchell, PA Operations Manager",
+      "labeled_date": "2026-01-15",
+      "hitl_threshold": "MISMATCH_only"
+    }
+  ]
+}

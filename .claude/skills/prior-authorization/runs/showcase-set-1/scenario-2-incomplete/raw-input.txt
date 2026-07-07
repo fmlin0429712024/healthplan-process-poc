@@ -1,0 +1,37 @@
+------------------------------------------------------------
+MIDWEST DIABETES & ENDOCRINE CENTER
+888 Medical Campus Dr, Suite 120 | Metro City, ST 55402
+Ph: 555-334-7700 | Fax: 555-334-7701
+------------------------------------------------------------
+PRIOR AUTHORIZATION REQUEST
+Date: July 2, 2026
+
+PATIENT INFORMATION
+Name:          Marcus Webb
+Date of Birth: 07/22/1969
+Member ID:     MBR-302847
+Plan:          BlueCrest HMO Select
+
+ORDERING PROVIDER
+Name:          Dr. James Okonkwo, MD CDE
+NPI:           1987654321
+Specialty:     Endocrinology
+
+TREATMENT REQUESTED
+Drug:          Ozempic (semaglutide) 0.5mg subcutaneous
+Frequency:     Weekly
+Duration:      12 months
+
+DIAGNOSIS
+Type 2 diabetes mellitus, uncontrolled
+ICD-10: E11.9
+
+LABORATORY RESULTS
+[Section left blank]
+
+PRIOR TREATMENT HISTORY
+- Metformin 1000mg twice daily x 12 months — inadequate glycemic control
+
+ATTESTATION
+Signature: Dr. James Okonkwo                    Date: 07/02/2026
+------------------------------------------------------------

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>prior-authorization-ai-solution</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="pdf-style.css" />
+</head>
+<body>
+<h1
+id="solution-proposal-ai-powered-prior-authorization-process-optimization">SOLUTION
+PROPOSAL: AI-Powered Prior Authorization Process Optimization</h1>
+<h2 id="problem-opportunity">1 Problem &amp; Opportunity</h2>
+<p>A regional health plan processes 15,000 prior authorization requests
+per month through manual nurse review. Clinical documentation arrives
+through fax, PDFs, portals, and uploads—creating a 4.2-day turnaround
+time and 22% rework rate due to missing information. Leadership wants
+40% turnaround reduction without increasing headcount.</p>
+<p><strong>Solution:</strong> Three AI opportunities implemented as
+<strong>Claude Skills</strong> (distributed as Plugins for Claude
+Coworker) to automate routine tasks while maintaining clinical quality
+and regulatory compliance.</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 40%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current State</th>
+<th>Goal (To-Be)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monthly PA volume</td>
+<td>~15,000 requests</td>
+<td>~15,000 (no change)</td>
+</tr>
+<tr>
+<td>Average turnaround time</td>
+<td>4.2 days</td>
+<td><strong>2.5 days</strong> (40% reduction)</td>
+</tr>
+<tr>
+<td>Rework rate</td>
+<td>22% (missing info)</td>
+<td><strong>&lt;5%</strong> (proactive validation)</td>
+</tr>
+<tr>
+<td>Auto-adjudication rate</td>
+<td>0% (100% manual)</td>
+<td><strong>70-80%</strong> (routine cases)</td>
+</tr>
+<tr>
+<td>Nurse review focus</td>
+<td>Data gathering + clinical judgment</td>
+<td><strong>Clinical judgment only</strong></td>
+</tr>
+<tr>
+<td>Provider status calls</td>
+<td>Frequent</td>
+<td><strong>Eliminated</strong> (automated updates)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="three-ai-opportunities-as-claude-skills">2 Three AI
+Opportunities as Claude Skills</h2>
+<h3 id="opportunity-1-document-completeness-checker">2.1 Opportunity 1:
+Document Completeness Checker</h3>
+<p><strong>Problem:</strong> 22% rework rate (3,300 cases/month) due to
+missing information.</p>
+<p><strong>Skill Implementation:</strong> - Ingests documentation from
+any channel (fax OCR, PDF, portal, upload) - Extracts structured data
+(diagnosis, labs, treatment history) - Validates against PA criteria;
+identifies missing elements - Returns immediate feedback to provider</p>
+<p><strong>Plugin Workflow:</strong> Provider submits → Skill validates
+→ Complete cases route to review / Incomplete cases return with specific
+guidance</p>
+<p><strong>Impact:</strong> Eliminate 22% rework; reduce turnaround by
+2-4 days for affected cases; immediate provider feedback</p>
+<hr />
+<h3 id="opportunity-2-clinical-guidelines-verification-engine">2.2
+Opportunity 2: Clinical Guidelines Verification Engine</h3>
+<p><strong>Problem:</strong> Manual guideline verification for 15,000
+cases/month is deterministic work that doesn’t require human judgment
+for routine cases.</p>
+<p><strong>Skill Implementation:</strong> - Loads clinical guidelines
+for requested treatment - Evaluates patient data against criteria
+(diagnosis, labs, prior treatments, contraindications) - Applies
+decision logic (if/then rules, thresholds, temporal requirements) -
+Produces: APPROVE / DENY (with reason) / ESCALATE (for nurse review) -
+Generates audit trail for regulatory compliance</p>
+<p><strong>Plugin Workflow:</strong> Complete request → Skill evaluates
+→ Routine cases auto-adjudicate (70-80%) / Complex cases escalate to
+nurse with pre-loaded context</p>
+<p><strong>Impact:</strong> Auto-adjudicate 70-80% of cases; &lt;1 day
+turnaround for routine approvals; nurses focus on complex clinical
+judgment</p>
+<hr />
+<h3 id="opportunity-3-pa-workflow-orchestrator">2.3 Opportunity 3: PA
+Workflow Orchestrator</h3>
+<p><strong>Problem:</strong> Frequent provider status calls consume
+nurse time; opaque process creates provider frustration.</p>
+<p><strong>Skill Implementation:</strong> - Tracks PA status through all
+stages - Sends automated updates at key milestones - Handles routine
+inquiries; escalates complex ones - Delivers decisions with clinical
+rationale</p>
+<p><strong>Plugin Workflow:</strong> Request submitted → Automated
+confirmation → Status updates at each stage → Decision notification with
+rationale</p>
+<p><strong>Impact:</strong> Eliminate routine status calls; improve
+provider satisfaction; free nurse capacity from administrative tasks</p>
+<hr />
+<h2 id="extensibility-implementation">3 Extensibility &amp;
+Implementation</h2>
+<p><strong>Extensibility:</strong> Modular Skill architecture extends to
+appeals, utilization review, case management; integrates with EHR/payer
+platforms; scales via Plugin distribution model.</p>
+<p><strong>Implementation:</strong> Phase 1 - Validate with historical
+data | Phase 2 - Pilot in shadow mode | Phase 3 - Measure &amp;
+scale</p>
+<p><strong>Outcome:</strong> 40% turnaround reduction, 70-80%
+auto-adjudication, maintained clinical quality &amp; regulatory
+compliance—without headcount increase.</p>
+<hr />
+<p><strong>Solution Proposal | July 2026</strong></p>
+</body>
+</html>

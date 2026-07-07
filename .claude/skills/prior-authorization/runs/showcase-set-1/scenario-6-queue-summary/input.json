@@ -1,0 +1,46 @@
+{
+  "_scenario": "Scenario 6 — Queue Summary Dashboard",
+  "_story": "PA manager asks for today's queue. System instantly surfaces 3 breached cases and 6 at-risk nurse cases. Replaces spreadsheet-based tracking.",
+  "_skill": "case-manager",
+
+  "report_date": "2026-07-07",
+  "queue_totals": {
+    "active": 312,
+    "new_today": 58,
+    "closed_today": 47
+  },
+  "by_stage": [
+    { "stage": "COMPLETENESS_CHECK", "count": 12, "sla_status": "OK" },
+    { "stage": "AWAITING_INFO",      "count": 89, "at_risk": 14, "breached": 3 },
+    { "stage": "CLINICAL_REVIEW",    "count": 34, "sla_status": "OK" },
+    { "stage": "NURSE_REVIEW",       "count": 28, "at_risk": 6 },
+    { "stage": "DECISION_PENDING",   "count": 4,  "sla_status": "OK" },
+    { "stage": "NOTIFICATION_SENT",  "count": 18, "sla_status": "OK" }
+  ],
+  "breached_cases": [
+    { "case_id": "PA-2026-07831", "treatment": "Humira",  "provider": "Dr. Lee",   "breached_hours_ago": 4.2 },
+    { "case_id": "PA-2026-07904", "treatment": "IVIG",    "provider": "Dr. Patel", "breached_hours_ago": 1.1 },
+    { "case_id": "PA-2026-08012", "treatment": "MRI",     "provider": "Dr. Kim",   "breached_hours_ago": 0.3 }
+  ],
+  "nurse_review_at_risk": [
+    { "case_id": "PA-2026-09001", "treatment": "Ozempic escalation",      "minutes_remaining": 48 },
+    { "case_id": "PA-2026-09044", "treatment": "Chemotherapy off-label",  "minutes_remaining": 31 },
+    { "case_id": "PA-2026-09067", "treatment": "Adalimumab pediatric",    "minutes_remaining": 55 },
+    { "case_id": "PA-2026-09089", "treatment": "Rituximab relapsed",      "minutes_remaining": 38 },
+    { "case_id": "PA-2026-09102", "treatment": "Dupilumab resubmission",  "minutes_remaining": 22 },
+    { "case_id": "PA-2026-09117", "treatment": "Ustekinumab off-label",   "minutes_remaining": 11 }
+  ],
+  "auto_adjudication": {
+    "decisions_today": 47,
+    "auto_adjudicated": 34,
+    "auto_pct": 72,
+    "target_pct": "70-80",
+    "escalated_to_nurse": 13
+  },
+  "throughput": {
+    "daily_target": 500,
+    "closed_today": 47,
+    "avg_turnaround_days": 2.3,
+    "turnaround_goal_days": 2.5
+  }
+}
