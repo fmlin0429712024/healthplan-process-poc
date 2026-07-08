@@ -156,7 +156,7 @@ Clinical staff update rules in plain English — no engineer needed, no model re
 Any team can discover and deploy this pipeline with one prompt — no setup required. Published live and searchable. Other health plan teams can install and run immediately.
 - Status: **live** — published at https://fmlin0429712024.github.io/ai-pdlc-marketplace/
 
-### ④ Google ADK — Enterprise Deployment Path *(only one outside Claude Code)*
+### ④ Google ADK — Enterprise Deployment Path
 Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI. SKILL.md files are identical in both. Switching is an infrastructure decision — no business logic changes. Enterprise features: IAM auth, Cloud Logging, auto-scaling, HIPAA-eligible BAA.
 - Status: designed + built, not yet deployed to cloud
 
@@ -171,7 +171,7 @@ Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI
 | Orchestration | Google ADK SequentialAgent | Google ADK (same) |
 | Business Rules | SKILL.md (plain English) | SKILL.md → internal wiki |
 | State | InMemorySessionService | Cloud Firestore |
-| Auth | Local ADC | Google Cloud IAM + VPC |
+| Auth | Local credentials | Google Cloud IAM + VPC |
 | Compliance | — | HIPAA BAA (Google Cloud) |
 
 ---
