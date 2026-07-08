@@ -4,7 +4,7 @@ A rapid AI prototype demonstrating how Claude + Google ADK can automate prior au
 
 ---
 
-## Problem
+## 1. Problem
 
 A regional health plan processes 15,000 PA requests per month through manual nurse review. Clinical documentation arrives via fax, PDF, portals, and uploads — creating a 4.2-day average turnaround and 22% rework rate due to missing information.
 
@@ -17,7 +17,7 @@ A regional health plan processes 15,000 PA requests per month through manual nur
 
 ---
 
-## Four AI Opportunities
+## 2. Four AI Opportunities
 
 ### 1. Ingestion — Unstructured → Structured ← *Prototype built*
 Multi-channel documentation (fax, PDF, portal, uploads) arrives in any format. AI extracts and normalizes all fields into structured JSON — eliminating manual data entry and enabling downstream automation.
@@ -55,7 +55,22 @@ flowchart LR
 
 ---
 
-## Prototype — Claude PA Pipeline
+## 3. Clinical Quality & Regulatory Compliance
+
+*Directly addressing: "How can AI improve this process while maintaining clinical quality and regulatory compliance?"*
+
+Each AI step carries a different hallucination risk. The design principle: push toward deterministic outputs wherever possible; escalate to human judgment where not.
+
+| Step | Risk | Why | Mitigation |
+|------|------|-----|------------|
+| ① Ingestion | 🟡 Medium | Free text may be misread or incomplete | Structured JSON output is machine-verifiable; tool selection scales with complexity (RAG / VectorDB / Graph RAG) |
+| ② Completeness | 🟢 Low | Rule-based checklist — no clinical judgment required | Deterministic field validation; AI confirms presence/absence only, never interprets |
+| ③ Guidelines | 🔴 **Highest** | Clinical decision directly impacts patient care; SOP is complex and multi-specialty | Deterministic rules for routine cases → forced ESCALATE for ambiguous → Eval Loop + HITL for non-deterministic → Flywheel for continuous improvement |
+| ④ Case Manager | 🟢 Low | Downstream of structured decisions; no independent clinical judgment | Zero independent judgment; full audit trail on every action satisfies regulatory requirements |
+
+---
+
+## 4. Prototype — Claude PA Pipeline
 
 End-to-end pipeline implemented as both a **Claude Cowork Skills plugin** (runs in Claude desktop or web — no local setup required) and a **Google ADK project** (enterprise deployment path).
 
@@ -97,7 +112,7 @@ cd adk_pa && pip install -e . && python run_pa.py scenario-1-auto-approve demo-r
 
 ---
 
-## Extensibility
+## 5. Extensibility
 
 ### ① Eval Loop with Human-in-the-Loop
 
@@ -140,7 +155,7 @@ Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI
 ---
 
 
-## Tech Stack
+## 6. Tech Stack
 
 | Layer | Prototype | Production Path |
 |-------|-----------|-----------------|
