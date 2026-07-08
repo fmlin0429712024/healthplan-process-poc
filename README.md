@@ -41,10 +41,10 @@ Domain router pattern — each clinical specialty is a **parallel sub-agent**. A
 | Domain | Status |
 |--------|--------|
 | RA Biologic | ✅ Implemented |
-| Oncology / Immuno | Stub |
-| Neurology | Stub |
-| Diabetes / Metabolic | Stub |
-| Inflammatory Bowel | Stub |
+| Oncology / Immuno | Planned |
+| Neurology | Planned |
+| Diabetes / Metabolic | Planned |
+| Inflammatory Bowel | Planned |
 
 ### 4. Case Manager — Workflow Automation ← *Prototype built*
 Frequent provider status calls consume nurse time. AI tracks PA status through all stages, sends automated updates, handles routine inquiries, and escalates complex ones to the nurse queue.
@@ -157,7 +157,7 @@ Any team can discover and deploy this pipeline with one prompt — no setup requ
 - Status: **live** — published at https://fmlin0429712024.github.io/ai-pdlc-marketplace/
 
 ### ④ Google ADK — Enterprise Deployment Path
-Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI. SKILL.md files are identical in both. Switching is an infrastructure decision — no business logic changes. Enterprise features: IAM auth, Cloud Logging, auto-scaling, HIPAA-eligible BAA.
+Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI. Business rules are identical in both. Switching is an infrastructure decision — no business logic changes. Enterprise features: IAM auth, Cloud Logging, auto-scaling, HIPAA-eligible BAA.
 - Status: designed + built, not yet deployed to cloud
 
 ---
@@ -169,8 +169,8 @@ Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI
 |-------|-----------|-----------------|
 | AI Model | Claude Sonnet (Anthropic API) | Gemini 2.5 Pro (Vertex AI) |
 | Orchestration | Google ADK SequentialAgent | Google ADK (same) |
-| Business Rules | SKILL.md (plain English) | SKILL.md → internal wiki |
-| State | InMemorySessionService | Cloud Firestore |
+| Business Rules | Plain-English rules files | Rules files → internal wiki |
+| State | In-memory (prototype) | Cloud Firestore |
 | Auth | Local credentials | Google Cloud IAM + VPC |
 | Compliance | — | HIPAA BAA (Google Cloud) |
 
