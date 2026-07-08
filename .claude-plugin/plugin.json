@@ -1,0 +1,11 @@
+{
+  "name": "prior-authorization",
+  "description": "AI pipeline for health plan prior authorization: raw fax/PDF → completeness check → clinical guidelines → APPROVE / DENY / ESCALATE. Covers 4 AI opportunities: Ingestion, Document Checker, Guidelines Verifier, Case Manager.",
+  "version": "0.1.0",
+  "author": { "name": "Forest Lin" },
+  "category": "healthcare",
+  "keywords": ["prior-authorization", "healthcare", "clinical", "insurance", "adk"],
+  "skills": ".claude/skills/prior-authorization",
+  "demo": "adk_pa/",
+  "readme": "README.md"
+}
