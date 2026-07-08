@@ -2,8 +2,6 @@
 
 A rapid AI prototype demonstrating how Claude + Google ADK can automate prior authorization (PA) processing for a regional health plan.
 
-**Built for:** 15-minute innovation briefing · July 2026
-
 ---
 
 ## Problem
