@@ -101,32 +101,28 @@ cd adk_pa && pip install -e . && python run_pa.py scenario-1-auto-approve demo-r
 
 ### ① Eval Loop with Human-in-the-Loop
 
-Targets only where AI judgment needs validation — not every decision.
-
 ```mermaid
-flowchart LR
-    split{"① Case Type"}
-    split -->|"80% deterministic"| QA["✅ Normal QA\npass/fail — exits here"]
-    split -->|"20% autonomous"| TA
+flowchart TD
+    SME["👩‍⚕️ Human SME\nSubject Matter Expert"]
 
-    subgraph LOOP ["② Eval Loop — Human in the Loop"]
-        direction TB
-        TA["🎓 Teaching Assistant\nGolden Set"]
-        GR["📊 Grader\nconclusion · reasoning · escalation"]
-        PR["👩‍⚕️ Professor\nAuditing Nurse"]
+    subgraph LOOP ["Eval Loop — Human in the Loop"]
+        direction LR
+        WF["📋 PA Workflow\nruns case → decision"]
+        EA["🎓 Eval Agent\nsynthetic data · golden set · audit"]
+        CMP["⚖️ Compare\ndo they agree?"]
         V["✅ Validated"]
-        TA --> GR
-        GR -->|pass| V
-        GR -->|conflict| PR
-        PR --> V
+        WF --> CMP
+        EA --> CMP
+        CMP -->|match| V
     end
 
-    V -. "③ Flywheel — BigQuery" .-> TA
+    CMP -->|conflict| SME
+    SME --> V
 ```
 
-- **① Narrow the target** — 80% is deterministic QA (pass/fail, exits the loop). Eval loop focuses only on the 20% context-based decisions where AI judgment needs validation.
-- **② Establish the loop** — Teaching Assistant builds the Golden Set. Grader scores on conclusion, reasoning, and escalation quality. Conflicts escalate to the **Professor** — the auditing nurse.
-- **③ Automate to a flywheel** — once BigQuery is in place, every real production case enriches the Golden Set automatically. The system improves with every decision, no manual curation needed.
+- **Before the loop** — deterministic rule-based cases are excluded upfront. This loop targets only context-based decisions where AI judgment needs validation.
+- **Inside the loop** — PA Workflow and Eval Agent run the same case in parallel, like AB testing. If they agree, the case is validated. If they conflict, it escalates to the Human SME.
+- **Beyond the loop** — in production, real cases feed into BigQuery automatically, turning this loop into a self-improving flywheel. No manual curation needed.
 - Status: designed + built, not yet connected to live systems.
 
 ### ② Knowledge Wiki — Engineering Project Context
