@@ -28,6 +28,16 @@ Multi-channel documentation (fax, PDF, portal, uploads) arrives in any format. A
 ### 3. Clinical Guidelines Verification Engine ← *Prototype built*
 Manual guideline verification for 15,000 cases/month is deterministic work for routine cases. AI loads clinical guidelines, evaluates patient data, applies decision logic, and produces APPROVE / DENY / ESCALATE with a full audit trail.
 
+Domain router pattern — each clinical specialty is a **parallel sub-agent**. Add a domain = add a folder.
+
+| Domain | Status |
+|--------|--------|
+| RA Biologic | ✅ Implemented |
+| Oncology / Immuno | Stub |
+| Neurology | Stub |
+| Diabetes / Metabolic | Stub |
+| Inflammatory Bowel | Stub |
+
 ### 4. Case Manager — Workflow Automation ← *Prototype built*
 Frequent provider status calls consume nurse time. AI tracks PA status through all stages, sends automated updates, handles routine inquiries, and escalates complex ones to the nurse queue.
 
