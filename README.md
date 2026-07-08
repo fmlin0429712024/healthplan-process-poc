@@ -132,5 +132,3 @@ Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI
 | Compliance | — | HIPAA BAA (Google Cloud) |
 
 ---
-
-**Interview Assignment · July 2026**
