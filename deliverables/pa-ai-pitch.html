@@ -905,12 +905,13 @@ Provider letter: auto-generated ✓</pre>
   <div style="text-align:center; color:var(--lgray); font-size:20px; margin:4px 0;">↓</div>
 
   <div class="arch-layer" style="border-color:var(--amber); background:#FFF8F0; border-style:dashed;">
-    <div class="arch-layer-label" style="color:var(--amber);">Extensibility (Designed ✦)</div>
+    <div class="arch-layer-label" style="color:var(--amber);">Extensibility (Designed ✦) — all inside Claude Code except ④</div>
     <div class="arch-row">
       <div class="arch-box future">🔄 Eval Loop<br><small>AI quality control</small></div>
       <div class="arch-box future">📚 Knowledge Wiki<br><small>Live guideline updates</small></div>
-      <div class="arch-box future">👤 HITL Review<br><small>Exception escalation</small></div>
-      <div class="arch-box future">☁️ ADK / Cloud<br><small>Enterprise deploy</small></div>
+      <div class="arch-box future">👤 HITL Review<br><small>Nurse escalation</small></div>
+      <div class="arch-box future">🛒 Marketplace<br><small>Plugin published</small></div>
+      <div class="arch-box future" style="border-color:var(--blue);">☁️ ADK / Cloud ④<br><small>Enterprise deploy</small></div>
     </div>
   </div>
 
@@ -936,14 +937,13 @@ Provider letter: auto-generated ✓</pre>
 <div class="slide" style="background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%); color:white;">
   <div class="section-label" style="color:var(--amber);">✦ Extensibility</div>
   <h2 style="color:white; margin-bottom:6px;">Designed &amp; Built — Ready to Activate</h2>
-  <p style="color:var(--lgray); margin-bottom:28px; font-size:15px;">
-    Three capabilities are architecturally complete in this prototype.
-    They are <em>not yet connected to live systems</em> — but the design is proven and activation is straightforward.
+  <p style="color:var(--lgray); margin-bottom:20px; font-size:15px;">
+    Four capabilities are architecturally complete. ① ② ③ built inside Claude Code — ④ is the only one outside.
   </p>
 
   <!-- EXT 1: Eval Loop + HITL -->
   <div class="ext-card" style="border:1px solid rgba(244,162,97,0.4); background:rgba(244,162,97,0.08);">
-    <span class="status-chip chip-designed">Designed + Built</span>
+    <span class="status-chip chip-designed">Claude Code · Designed + Built</span>
     <h3>① Eval Loop with Human-in-the-Loop</h3>
     <div class="row" style="margin-top:8px;">
       <div class="col-2">
@@ -958,9 +958,7 @@ Provider letter: auto-generated ✓</pre>
           <div>Grader compares to Golden Set</div>
           <div style="color:rgba(255,255,255,0.4); margin:4px 0;">↓</div>
           <div>MATCH → <span style="color:#9AE6B4;">Auto-finalize</span></div>
-          <div style="color:rgba(255,255,255,0.4); margin:4px 0;"></div>
           <div>BORDERLINE → <span style="color:#F6E05E;">Flag for review</span></div>
-          <div style="color:rgba(255,255,255,0.4); margin:4px 0;"></div>
           <div>MISMATCH → <span style="color:#FC8181;">Nurse escalation</span></div>
         </div>
       </div>
@@ -969,32 +967,55 @@ Provider letter: auto-generated ✓</pre>
 
   <!-- EXT 2: Wiki -->
   <div class="ext-card" style="border:1px solid rgba(0,168,150,0.4); background:rgba(0,168,150,0.08);">
-    <span class="status-chip chip-built">Designed + Built</span>
+    <span class="status-chip chip-built">Claude Code · Designed + Built</span>
     <h3>② Knowledge Wiki — Engineering Project Context</h3>
     <div class="row" style="margin-top:8px;">
       <div class="col-2">
         <p>Clinical guidelines and business rules live as structured Markdown files — readable by non-engineers. When a payer changes a coverage policy, the clinical team edits one file. The AI pipeline picks it up immediately. No deployment. No code change.</p>
-        <p style="margin-top:8px; font-size:13px; opacity:0.7;">This same pattern scales to the AI engineering team: system context, onboarding docs, domain knowledge — all versioned, searchable, and injected into AI agents at runtime.</p>
+        <p style="margin-top:8px; font-size:13px; opacity:0.7;">CLAUDE.md + SKILL.md = project context any AI agent can read. Designed to extend to a live internal wiki with payer policy sync.</p>
       </div>
       <div class="col" style="font-size:13px;">
         <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:14px;">
           <div style="margin-bottom:8px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Today</div>
           <div>📁 skills/ra-biologic/SKILL.md</div>
-          <div>📁 skills/oncology/SKILL.md</div>
           <div>📁 reference/guidelines.json</div>
+          <div>📄 CLAUDE.md — agent onboarding</div>
           <div style="margin-top:10px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Tomorrow</div>
           <div>🌐 Internal wiki → AI reads live</div>
           <div>📡 Payer policy feed → auto-sync</div>
-          <div>✅ Change validation before deploy</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- EXT 3: ADK -->
+  <!-- EXT 3: Marketplace -->
+  <div class="ext-card" style="border:1px solid rgba(159,122,234,0.4); background:rgba(159,122,234,0.08);">
+    <span class="status-chip" style="background:rgba(159,122,234,0.3); color:#D6BCFA; border:1px solid rgba(159,122,234,0.5);">Claude Code · Published Live</span>
+    <h3>③ Plugin Marketplace — Shareable &amp; Discoverable</h3>
+    <div class="row" style="margin-top:8px;">
+      <div class="col-2">
+        <p>The PA pipeline is registered as a plugin in the <strong>AI-PDLC Marketplace</strong> — a Claude Code plugin catalog following the same pattern as Anthropic's official plugin registry. Any team can browse, discover, and install it. The marketplace itself is live on GitHub Pages.</p>
+        <p style="margin-top:8px; font-size:13px; opacity:0.7;">Plugin = one entry in marketplace.json + a CLAUDE.md in the source repo. Zero infrastructure to maintain.</p>
+      </div>
+      <div class="col" style="font-size:13px;">
+        <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:14px;">
+          <div style="margin-bottom:8px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Live Now</div>
+          <div>🛒 Marketplace published</div>
+          <div style="color:rgba(255,255,255,0.4); margin:4px 0;"></div>
+          <div>📦 prior-authorization listed</div>
+          <div style="color:rgba(255,255,255,0.4); margin:4px 0;"></div>
+          <div>🌐 GitHub Pages — free hosting</div>
+          <div style="margin-top:10px; color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:1px;">Install prompt</div>
+          <div style="font-family:monospace; font-size:11px; color:#D6BCFA;">Run scenario-1-auto-approve<br>(refer to CLAUDE.md)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXT 4: ADK -->
   <div class="ext-card" style="border:1px solid rgba(99,179,237,0.4); background:rgba(99,179,237,0.08);">
-    <span class="status-chip chip-built">Designed + Built</span>
-    <h3>③ Google ADK — Enterprise Deployment Path</h3>
+    <span class="status-chip chip-built" style="background:rgba(99,179,237,0.3); color:#BEE3F8; border:1px solid rgba(99,179,237,0.5);">Outside Claude Code · Designed + Built</span>
+    <h3>④ Google ADK — Enterprise Deployment Path</h3>
     <div class="row" style="margin-top:8px;">
       <div class="col-2">
         <p>The same Claude prototype is mirrored as a Google Agent Development Kit (ADK) project using Gemini 2.5 Pro on Vertex AI. This means: enterprise auth, SOC 2 compliant infrastructure, auto-scaling, and production observability — without rewriting any business logic.</p>
