@@ -41,11 +41,23 @@ Domain router pattern — each clinical specialty is a **parallel sub-agent**. A
 ### 4. Case Manager — Workflow Automation ← *Prototype built*
 Frequent provider status calls consume nurse time. AI tracks PA status through all stages, sends automated updates, handles routine inquiries, and escalates complex ones to the nurse queue.
 
+### How the Four Opportunities Connect
+
+```mermaid
+flowchart LR
+    A[📄 Incoming Request\nFax · PDF · Portal] --> B[① Ingestion\nExtract & Structure]
+    B --> C[② Document Checker\nValidate Completeness]
+    C -->|Incomplete| R[↩ Return to Provider]
+    C -->|Complete| D[③ Guidelines Verifier\nClinical Decision]
+    D -->|APPROVE / DENY| E[④ Case Manager\nNotify & Close]
+    D -->|ESCALATE| N[👩‍⚕️ Nurse Review] --> E
+```
+
 ---
 
 ## Prototype — Claude PA Pipeline
 
-End-to-end pipeline implemented as both a **Claude Skills plugin** and a **Google ADK project**.
+End-to-end pipeline implemented as both a **Claude Cowork Skills plugin** (runs in Claude desktop or web — no local setup required) and a **Google ADK project** (enterprise deployment path).
 
 ### Pipeline Stages
 
@@ -87,8 +99,6 @@ cd adk_pa && pip install -e . && python run_pa.py scenario-1-auto-approve demo-r
 
 ## Extensibility
 
-① ② ③ built inside Claude Code. ④ is the only one outside.
-
 ### ① Eval Loop with Human-in-the-Loop
 Teaching Assistant pattern: **Golden Set** (answer key) → **Grader agent** (marks decisions) → **HITL escalation** (nurse review for conflicts).
 - 80% deterministic: zero tolerance, exact match required
@@ -114,7 +124,7 @@ Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI
 
 | Layer | Prototype | Production Path |
 |-------|-----------|-----------------|
-| AI Model | Claude Sonnet (Vertex AI) | Gemini 2.5 Pro (Vertex AI) |
+| AI Model | Claude Sonnet (Anthropic API) | Gemini 2.5 Pro (Vertex AI) |
 | Orchestration | Google ADK SequentialAgent | Google ADK (same) |
 | Business Rules | SKILL.md (plain English) | SKILL.md → internal wiki |
 | State | InMemorySessionService | Cloud Firestore |
