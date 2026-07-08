@@ -2,6 +2,14 @@
 
 A rapid AI prototype demonstrating how Claude + Google ADK can automate prior authorization (PA) processing for a regional health plan.
 
+| Time | Section | Focus |
+|------|---------|-------|
+| 0–2 min | §1 Problem | Business context & metrics |
+| 2–5 min | §2 AI Opportunities | Four use cases |
+| 5–10 min | §4 Prototype | Live Cowork demo |
+| 10–12 min | §3 Quality & Compliance | CMO question answered |
+| 12–15 min | §5 Extensibility | Strategic vision |
+
 ---
 
 ## 1. Problem
@@ -140,12 +148,12 @@ flowchart TD
 - **Beyond the loop** — in production, real cases feed into BigQuery automatically, turning this loop into a self-improving flywheel. No manual curation needed.
 - Status: designed + built, not yet connected to live systems.
 
-### ② Knowledge Wiki — Engineering Project Context
-SKILL.md files are plain-English business rules readable by non-engineers. CLAUDE.md provides agent onboarding context. Clinical staff propose updates; engineers version-control; AI agents inject at runtime. No model retraining required.
+### ② Knowledge Wiki — Living Business Rules
+Clinical staff update rules in plain English — no engineer needed, no model retraining required. Rules live as versioned files; AI agents pick them up at runtime. Clinical knowledge stays current without touching the model.
 - Status: designed + built, not yet connected to live wiki
 
-### ③ Plugin Marketplace — Shareable & Discoverable
-PA pipeline registered in the [AI-PDLC Marketplace](https://github.com/fmlin0429712024/ai-pdlc-marketplace) following Anthropic's plugin registry pattern. Live on GitHub Pages. Any team can discover and install via one prompt.
+### ③ Plugin Marketplace — Shareable & Reusable
+Any team can discover and deploy this pipeline with one prompt — no setup required. Published live and searchable. Other health plan teams can install and run immediately.
 - Status: **live** — published at https://fmlin0429712024.github.io/ai-pdlc-marketplace/
 
 ### ④ Google ADK — Enterprise Deployment Path *(only one outside Claude Code)*
