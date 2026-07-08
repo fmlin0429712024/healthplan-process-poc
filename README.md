@@ -68,10 +68,11 @@ Raw Fax / PDF / Portal
 
 ### Run the Demo
 
+**AI Agent (Windsurf / Devin / Claude):** see [`DEMO-PROMPTS.md`](.claude/skills/prior-authorization/runs/DEMO-PROMPTS.md)
+
+**ADK (Python):**
 ```bash
-cd adk_pa
-pip install -e .
-python run_pa.py scenario-1-auto-approve demo-run-01
+cd adk_pa && pip install -e . && python run_pa.py scenario-1-auto-approve demo-run-01
 ```
 
 ---
