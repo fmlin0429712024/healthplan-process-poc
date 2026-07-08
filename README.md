@@ -88,7 +88,7 @@ Raw Fax / PDF / Portal
 
 ### Run the Demo
 
-**AI Agent (Windsurf / Devin / Claude):** see [`DEMO-PROMPTS.md`](.claude/skills/prior-authorization/runs/DEMO-PROMPTS.md)
+**Claude Cowork (recommended):** Open the `pa-poc` project in Claude desktop or claude.ai → switch to Cowork → paste any prompt from [`DEMO-PROMPTS.md`](.claude/skills/prior-authorization/runs/DEMO-PROMPTS.md)
 
 **ADK (Python):**
 ```bash
