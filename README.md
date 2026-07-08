@@ -100,10 +100,34 @@ cd adk_pa && pip install -e . && python run_pa.py scenario-1-auto-approve demo-r
 ## Extensibility
 
 ### ① Eval Loop with Human-in-the-Loop
-Teaching Assistant pattern: **Golden Set** (answer key) → **Grader agent** (marks decisions) → **HITL escalation** (nurse review for conflicts).
-- 80% deterministic: zero tolerance, exact match required
-- 10% autonomous: scored on 3 dimensions (conclusion / reasoning / escalation quality)
-- Status: designed + built, not yet connected to live systems
+
+Targets only where AI judgment needs validation — not every decision.
+
+```mermaid
+flowchart LR
+    split{"① Case Type"}
+    split -->|"80% deterministic"| QA["✅ Normal QA\npass/fail — exits here"]
+    split -->|"20% autonomous"| TA
+
+    subgraph LOOP ["② Eval Loop — Human in the Loop"]
+        direction TB
+        TA["🎓 Teaching Assistant\nGolden Set"]
+        GR["📊 Grader\nconclusion · reasoning · escalation"]
+        PR["👩‍⚕️ Professor\nAuditing Nurse"]
+        V["✅ Validated"]
+        TA --> GR
+        GR -->|pass| V
+        GR -->|conflict| PR
+        PR --> V
+    end
+
+    V -. "③ Flywheel — BigQuery" .-> TA
+```
+
+- **① Narrow the target** — 80% is deterministic QA (pass/fail, exits the loop). Eval loop focuses only on the 20% context-based decisions where AI judgment needs validation.
+- **② Establish the loop** — Teaching Assistant builds the Golden Set. Grader scores on conclusion, reasoning, and escalation quality. Conflicts escalate to the **Professor** — the auditing nurse.
+- **③ Automate to a flywheel** — once BigQuery is in place, every real production case enriches the Golden Set automatically. The system improves with every decision, no manual curation needed.
+- Status: designed + built, not yet connected to live systems.
 
 ### ② Knowledge Wiki — Engineering Project Context
 SKILL.md files are plain-English business rules readable by non-engineers. CLAUDE.md provides agent onboarding context. Clinical staff propose updates; engineers version-control; AI agents inject at runtime. No model retraining required.
