@@ -168,7 +168,7 @@ Same pipeline mirrored as a Google ADK project using Gemini 2.5 Pro on Vertex AI
 | Layer | Prototype | Production Path |
 |-------|-----------|-----------------|
 | AI Model | Claude Sonnet (Anthropic API) | Gemini 2.5 Pro (Vertex AI) |
-| Orchestration | Google ADK SequentialAgent | Google ADK (same) |
+| Orchestration | Claude Code CLI (Skills Plugin) | Google ADK SequentialAgent |
 | Business Rules | Plain-English rules files | Rules files → internal wiki |
 | State | In-memory (prototype) | Cloud Firestore |
 | Auth | Local credentials | Google Cloud IAM + VPC |
