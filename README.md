@@ -1,4 +1,4 @@
-# AI-Powered Prior Authorization — PoC
+# Healthcare Agentic AI POC — Prior Authorization Operations
 
 A rapid AI prototype demonstrating how Claude + Google ADK can automate prior authorization (PA) processing for a regional health plan.
 
